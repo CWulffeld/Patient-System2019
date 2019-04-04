@@ -5,6 +5,14 @@
     <title>Title</title>
 
     <style>
+
+        section h2{
+            padding-left: 30px;
+        }
+        #login_form{
+            padding-left: 30px;
+        }
+
         #login_form label{
             width: 150px;
             float: left;
@@ -25,8 +33,9 @@
 <section>
     <h2>Login formula</h2>
     <form action="/login" method="post" id="login_form">
-        <label>Username</label>
-        <input type="text" name="Brugernavn" placeholder="Skriv brugernavn">
+
+        <label>Brugernavn</label>
+        <input type="text" name="Brugernavn" placeholder="Læge/sekretær ">
         <!--<br> er et break-tag (skifter linje, så username og password ikke er på samme linje)-->
         <br>
         <label>Password</label>
