@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping("/lægeHome")
     public String lægeHome(){
-        return "lægeHome";
+        return "lægeStartsside";
     }
 
     @GetMapping("/sekretærHome")
@@ -28,5 +28,10 @@ public class HomeController {
     @GetMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @GetMapping("/lægeStartsside")
+    public String lægeStartsside(){
+        return "lægeStartsside";
     }
 }
