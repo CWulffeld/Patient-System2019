@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping("/lægeHome")
     public String lægeHome(){
-        return "lægeStartsside";
+        return "lægeHome";
     }
 
     @GetMapping("/sekretærHome")
