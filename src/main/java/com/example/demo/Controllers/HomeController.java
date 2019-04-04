@@ -24,8 +24,9 @@ public class HomeController {
     public String sekretærHome(){
         return "sekretærHome";
     }
-
+    
     @GetMapping("/login")
     public String login(){
-        return "login";}
+        return "login";
+    }
 }
