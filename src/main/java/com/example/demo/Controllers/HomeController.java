@@ -15,5 +15,13 @@ public class HomeController {
     }
 
 
+    @GetMapping("/LægeHome")
+    public String lægeHome(){
+        return "lægeHome";
+    }
 
+    @GetMapping("/SekretærHome")
+    public String sekretærHome(){
+        return "sekretærHome";
+    }
 }
