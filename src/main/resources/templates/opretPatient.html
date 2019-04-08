@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Patient</title>
+    <style>
+
+        #opret_patient  input{
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div th:insert="fragments/header :: header"></div>
+</header>
+
+<div th:insert="fragments/sidebarLægeOpretPatient :: sidebarLægeOpretPatient"></div>
+
+
+<div id="wrapper">
+    <h1>Opret patient</h1>
+    <section>
+
+        <form action="/??" method="post" id="opret_patient ">
+
+            <label> Fornavn: </label>
+            <input type="text" name="Fornavn" placeholder="information 1 ">
+            <br>
+            <label> Efternavn: </label>
+            <input type="text" name="information 2" placeholder="information 2 ">
+            <br>
+            <label> CPR.nr </label>
+            <input type="number" name="information 2" placeholder="information 2 ">
+            <br>
+            <input type="submit" value="Opret patient">
+        </form>
+    </section>
+</div>
+
+
+</body>
+</html>

@@ -34,4 +34,6 @@ public class HomeController {
     public String lægeStartsside(){
         return "lægeStartsside";
     }
+
+
 }

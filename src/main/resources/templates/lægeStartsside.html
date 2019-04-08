@@ -2,48 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-        }
-
-        .sidenav {
-            height: 100%;
-            padding-top: 30px;
-            width: 160px;
-            position: fixed;
-            z-index: 1;
-            top: 50px;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-
-        }
-
-        .sidenav a {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-        }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-        .main {
-            margin-left: 160px; /* Same as the width of the sidenav */
-            font-size: 28px; /* Increased text to enable scrolling */
-            padding: 0px 10px;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 75px;}
-            .sidenav a {font-size: 18px;}
-        }
-    </style>
+    <title>Læge startsside</title>
 </head>
 <body>
 
@@ -51,15 +10,19 @@
     <div th:insert="fragments/header :: header"></div>
 </header>
 
+<div th:insert="fragments/sidebarLægeOpretPatient :: sidebarLægeOpretPatient"></div>
+
+
 
 <div class="sidenav">
-    <a href="#about">Opret patient</a>
+    <a href="/opretPatient">Opret patient</a>
     <a href="/login">Login</a>
 
 </div>
 
-<div>
-    <h1> Læge dhdhdhdhdhdhdhdhhddh</h1>
+<div id="wrapper">
+    <h1> Hej Læge</h1>
+    <h2> Vælg mellem at oprette en ny patient eller logge ind med en allerede eksisterende patient. Benyt patient cpr</h2>
 </div>
 
 

@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<div th:fragment="sidebarLæge">
+<div th:fragment="sidebarLægeOpretPatient">
 <head>
     <meta charset="UTF-8">
-    <title>Sidebar Læge</title>
+    <title>Sidebar</title>
     <style>
-
         #wrapper{
             margin-left: 200px;
             margin-right: 50px;
-
         }
-
         body {
             font-family: "Lato", sans-serif;
         }
@@ -32,7 +29,7 @@
         .sidenav a {
             padding: 6px 8px 6px 16px;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 25px;
             color: #818181;
             display: block;
         }
@@ -49,20 +46,16 @@
     </style>
 </head>
 <body>
-
 <div class="sidenav">
-    <a href="/lægeHome">Læge Home </a>
-    <a href="/opretReceptLæge">Opret recept</a>
-    <a href="/opretKonsultation">Opret konsultation </a>
-    <a href="/opretDiagnose">Opret diagnose </a>
-    <a href="/patientInformationer">Patient informationer</a>
-    <a href="/opdaterPatient">Opdater patient</a>
-    <a href="/sletPatient">Slet patient</a>
-</div>
+    <a href="/opretPatient" >Opret patient</a>
+    <a href="/login">Login</a>
 
+</div>
 
 <div id="wrapper">
 
 </div>
+
 </body>
+</div>
 </html>
