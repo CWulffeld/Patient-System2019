@@ -1,4 +1,12 @@
 package com.example.demo.Services;
 
-public class PatientService {
+import com.example.demo.Models.Patient;
+import org.springframework.*;
+
+import java.util.List;
+
+public interface PatientService {
+    List<Patient> FindAllePatienter();
+
+
 }
