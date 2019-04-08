@@ -3,13 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret Patient</title>
-    <style>
 
-        #opret_patient  input{
-            margin-top: 10px;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -22,21 +16,49 @@
 
 <div id="wrapper">
     <h1>Opret patient</h1>
+
     <section>
 
-        <form action="/??" method="post" id="opret_patient ">
+        <form action="/??" method="post" id="opret_patient">
 
             <label> Fornavn: </label>
-            <input type="text" name="Fornavn" placeholder="information 1 ">
+            <input type="text" name="Fornavn" placeholder="Fornavn" id="fornavn">
             <br>
+
             <label> Efternavn: </label>
-            <input type="text" name="information 2" placeholder="information 2 ">
+            <input type="text" name="Efternavn" placeholder="Efternavn" id="efternavn">
             <br>
-            <label> CPR.nr </label>
-            <input type="number" name="information 2" placeholder="information 2 ">
+
+            <label> CPR nr: </label>
+            <input type="number" name="CPR.nr" placeholder="CPR.nr" id="cpr.nr">
             <br>
+
+            <label> Fødselsdato: </label>
+            <input type="date" name="Fødselsdato" placeholder="Fødselsdato" id="fødselsdato">
+            <br>
+
+            <label> Telefon nr: </label>
+            <input type="number" name="Telefon nummer" placeholder="Telefon nummer" id="telefon.nr">
+            <br>
+
+            <label> Adresse: </label>
+            <input type="text" name="Adresse" placeholder="Adresse" id="adresse">
+            <br>
+
+            <label> Højde: </label>
+            <input type="number" name="Højde" placeholder="Højde" id="højde">
+            <br>
+
+            <label> Vægt: </label>
+            <input type="number" name="Vægt" placeholder="Vægt" id="vægt">
+            <br>
+
+            <label> Kort beskrivelse af patient: </label>
+            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="comment"></textarea>
+            <br>
+
             <input type="submit" value="Opret patient">
-            .
+
         </form>
     </section>
 </div>
