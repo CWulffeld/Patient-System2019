@@ -4,11 +4,79 @@
     <head>
         <meta charset="UTF-8">
         <title>Sidebar Sekretær </title>
-        <link rel="stylesheet" type="text/css" href="../styles.css">
+        <!--<link rel="stylesheet" type="text/css" href="../styles.css">-->
 
         <style>
             body {
                 font-family: "Lato", sans-serif;
+            }
+
+            #wrapper {
+                margin-left: 200px;
+                margin-right: 50px;
+            }
+
+            .topnav {
+                height: 50px;
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                height: 50px;
+            }
+
+            .topnav a:hover {
+                background-color: lightgrey;
+                color: black;
+            }
+
+            .topnav a.active {
+                background-color: dimgrey;
+                color: white;
+            }
+
+
+            .sidenav {
+                height: 100%;
+                padding-top: 30px;
+                width: 160px;
+                position: fixed;
+                z-index: 1;
+                top: 50px;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+
+            }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+            }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+
+            main {
+                margin-left: 160px; /* Same as the width of the sidenav */
+                font-size: 28px; /* Increased text to enable scrolling */
+                padding: 0px 10px;
+            }
+
+            @media screen and (max-height: 450px) {
+                .sidenav {padding-top: 75px;}
+                .sidenav a {font-size: 18px;}
             }
         </style>
     </head>
@@ -24,4 +92,5 @@
 
     </div>
     </body>
+</div>
 </html>
