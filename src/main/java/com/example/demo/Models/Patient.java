@@ -20,9 +20,8 @@ public class Patient {
     private double vægt;
     private int telefonNr;
     private String adresse;
-    private String patientBeskrivelse;
 
-    public Patient(int cpr, String fornavn, String efternavn, Date dato, int cm, double vægt, int telefonNr, String adresse, String patientBeskrivelse) {
+    public Patient(int cpr, String fornavn, String efternavn, Date dato, int cm, double vægt, int telefonNr, String adresse) {
         this.cpr = cpr;
         this.fornavn = fornavn;
         this.efternavn = efternavn;
@@ -31,7 +30,6 @@ public class Patient {
         this.vægt = vægt;
         this.telefonNr = telefonNr;
         this.adresse = adresse;
-        this.patientBeskrivelse=patientBeskrivelse;
     }
 
     public int getCpr() {
@@ -92,14 +90,6 @@ public class Patient {
     }
 
 
-    public String getPatientBeskrivelse() {
-        return patientBeskrivelse;
-    }
-
-    public void setPatientBeskrivelse(String patientBeskrivelse) {
-        this.patientBeskrivelse = patientBeskrivelse;
-    }
-
     @Override
     public String toString() {
         return "Patient{" +
@@ -109,7 +99,7 @@ public class Patient {
                 ", højde=" + højde +
                 ", vægt=" + vægt +
                 ", telefonNr=" + telefonNr +
-                ", Adresse='" + adresse + '\'' + ""
+                ", Adresse='" + adresse + '\'' +
                 '}';
     }
 
