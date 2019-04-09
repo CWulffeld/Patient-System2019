@@ -75,7 +75,7 @@ public class PatientRepositorySQL{
     }
 
 
-//SELECET DISTINCT. selecter patient cpr via argumentet. Bruges til at logge ind med
+//SELECET DISTINCT. selecter patient cpr via argumentet.
     public void selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
         Statement stmt = DBConfig.getConnection().createStatement();
 

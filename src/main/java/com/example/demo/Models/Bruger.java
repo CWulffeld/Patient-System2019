@@ -11,6 +11,10 @@ public class Bruger {
 
 
 
+    public Bruger(){
+
+    }
+
 
     public String getRolle() {
         return rolle;

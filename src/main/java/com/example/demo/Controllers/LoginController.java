@@ -26,7 +26,7 @@ public class LoginController {
     }
 
 
-   //Virker ikke med brugernavn endnu. Hvis de 2 udkommenterede linjer fjernes, virker det med kun cpr nr
+   //Virker ikke rigtigt endnu. Den tester for læge/sekretær, men ikke for cpr.Den ved godt dog godt den skal have en int som input.
     @PostMapping("/login")
     public String login(Patient patient, Model model, Bruger bruger) throws SQLException, ClassNotFoundException {
 
@@ -35,9 +35,11 @@ public class LoginController {
 
         if (bruger.getRolle().equalsIgnoreCase("Læge")){
             patientService.tjekLogin(patient.getCpr());
+            System.out.println(patient.getCpr());
             return "lægeHome";
         }
         else  if (bruger.getRolle().equalsIgnoreCase("Sekretær")){
+            System.out.println(patient.getCpr());
             patientService.tjekLogin(patient.getCpr());
             return "sekretærHome";
         }else {

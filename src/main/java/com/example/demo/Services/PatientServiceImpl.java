@@ -1,5 +1,6 @@
 package com.example.demo.Services;
 
+import com.example.demo.Models.Bruger;
 import com.example.demo.Models.Patient;
 import com.example.demo.Repositories.PatientRepository;
 import com.example.demo.Repositories.PatientRepositorySQL;
@@ -13,6 +14,8 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     PatientRepositorySQL patientRepositorySQL;
+
+
 
    // private PatientRepository patientRepository;
 
@@ -35,11 +38,23 @@ public class PatientServiceImpl implements PatientService {
 
 
 
+
+//Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
     @Override
     public void tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
+       Patient patient = new Patient();
+
+
 
             patientRepositorySQL.selectPatientCpr(cpr);
 
+
+//
+//            if (patient.getCpr() == cpr) {
+//                return cpr;
+//            }
+//
+//            return 0;
 
 
 
