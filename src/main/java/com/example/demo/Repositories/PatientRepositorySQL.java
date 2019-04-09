@@ -46,7 +46,7 @@ public class PatientRepositorySQL{
 
     }
 
-    public void insertPatienttoDB(String fornavn, String efternavn, int cpr, Date fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse) throws SQLException, ClassNotFoundException {
+    public void insertPatienttoDB(String fornavn, String efternavn, int cpr, String fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse) throws SQLException, ClassNotFoundException {
         Statement stmt = DBConfig.getConnection().createStatement();
 
 
@@ -59,8 +59,13 @@ public class PatientRepositorySQL{
                 "Patient_adresse, " +
                 "Patient_højde, "+
                 "Patient_vægt, "+
-                "Patient_beskrivelse)" + "VALUES " +
-                 "('" + fornavn + "'," + efternavn + "'," + cpr + "'," + fødselsdato + "'," + telefonnr + "'," + adresse + "'," + højde + "'," + vægt + "'," + beskrivelse + "')";
+                "Patient_beskrivelse) " +
+
+                "VALUES " +
+                 "('" + fornavn + "', '" +
+                efternavn + "', '" +
+                cpr + "', '" +
+                fødselsdato + "', '" + telefonnr + "', '" + adresse + "', '" + højde + "', '" + vægt + "', '" + beskrivelse + "')";
 
 
 

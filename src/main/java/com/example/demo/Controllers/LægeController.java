@@ -4,6 +4,7 @@ package com.example.demo.Controllers;
 import com.example.demo.Models.Patient;
 import com.example.demo.Services.PatientService;
 import com.example.demo.Services.PatientServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,20 +16,23 @@ import java.sql.SQLException;
 @Controller
 public class LægeController {
 
-    //PatientService patientService;
-    PatientServiceImpl patientService;
+    @Autowired
+    PatientService patientService;
+
+    @Autowired
+    PatientServiceImpl patientServiceimpl;
 
     @GetMapping("/opretPatient")
     public String submitPatient(Model model){
-
         model.addAttribute("patient", new Patient());
+
         return "opretPatient";
     }
 
     @PostMapping("/opretPatient")
-    public String submitPatient (@ModelAttribute Patient patient) throws SQLException, ClassNotFoundException {
-
+    public String submitPatient (@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException {
         patientService.opretPatient(patient);
+
 
         return "opretPatient";
     }

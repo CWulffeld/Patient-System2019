@@ -22,11 +22,11 @@
         <form method="post" th:action="@{/opretPatient}" id="opret_patient">
 
             <label> Fornavn: </label>
-            <input type="text" name="Fornavn" placeholder="Fornavn" id="fornavn" th:field="${patient.forNavn}">
+            <input type="text" name="Fornavn" placeholder="Fornavn" id="forNavn" th:field="${patient.forNavn}">
             <br>
 
             <label> Efternavn: </label>
-            <input type="text" name="Efternavn" placeholder="Efternavn" id="efternavn" th:field="${patient.efterNavn}">
+            <input type="text" name="Efternavn" placeholder="Efternavn" id="efterNavn" th:field="${patient.efterNavn}">
             <br>
 
             <label> CPR nr: </label>
@@ -38,7 +38,7 @@
             <br>
 
             <label> Telefon nr: </label>
-            <input type="number" name="Telefon nummer" placeholder="Telefon nummer" id="telefon.nr" th:field="${patient.telefonNr}">
+            <input type="number" name="Telefon nummer" placeholder="Telefon nummer" id="telefonNr" th:field="${patient.telefonNr}">
             <br>
 
             <label> Adresse: </label>
@@ -54,10 +54,10 @@
             <br>
 
             <label> Kort beskrivelse af patient: </label>
-            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="comment" th:field ="${patient.kortBeskrivelse}"></textarea>
+            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="kortBeskrivelse" th:field ="${patient.kortBeskrivelse}"></textarea>
             <br>
 
-            <input type="submit" value="Opret patient">
+            <input type="submit" value="Opret patient" >
 
         </form>
     </section>

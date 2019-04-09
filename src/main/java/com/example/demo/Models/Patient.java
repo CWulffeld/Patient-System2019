@@ -16,14 +16,14 @@ public class Patient {
     private String efterNavn;
     private int cpr;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date fødselsdato;
+    private String fødselsdato;
     private int højde;
     private int vægt;
     private int telefonNr;
     private String adresse;
     private String kortBeskrivelse;
 
-    public Patient(String forNavn, String efterNavn, int cpr, Date fødselsdato, int telefonNr, String adresse, int højde, int vægt, String kortBeskrivelse){
+    public Patient(String forNavn, String efterNavn, int cpr, String fødselsdato, int telefonNr, String adresse, int højde, int vægt, String kortBeskrivelse){
 
         this.forNavn=forNavn;
         this.efterNavn=efterNavn;
@@ -62,11 +62,11 @@ public class Patient {
 
     public void setCpr(int cpr){ this.cpr=cpr;}
 
-    public Date getFødselsdato() {
+    public String getFødselsdato() {
         return fødselsdato;
     }
 
-    public void setFødselsdato(Date fødselsdato) {
+    public void setFødselsdato(String fødselsdato) {
         this.fødselsdato = fødselsdato;
     }
 
