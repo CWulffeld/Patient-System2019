@@ -1,60 +1,66 @@
 package com.example.demo.Models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
-@Entity
-@XmlRootElement
 public class Patient {
+
+    private List<Patient> patientList;
+
     @Id
     private int cpr;
-    private String fornavn;
-    private String efternavn;
+    private String forNavn;
+    private String efterNavn;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date alder;
+    private DateTimeFormat fødselsdato;
     private int højde;
-    private double vægt;
+    private int vægt;
     private int telefonNr;
+
+    public void setFødselsdato(DateTimeFormat fødselsdato) {
+        this.fødselsdato = fødselsdato;
+    }
+
+    public String getKortBeskrivelse() {
+        return kortBeskrivelse;
+    }
+
+    public void setKortBeskrivelse(String kortBeskrivelse) {
+        this.kortBeskrivelse = kortBeskrivelse;
+    }
+
+    private String kortBeskrivelse;
+
+    public String getForNavn() {
+        return forNavn;
+    }
+
+    public void setForNavn(String forNavn) {
+        this.forNavn = forNavn;
+    }
+
+    public String getEfterNavn() {
+        return efterNavn;
+    }
+
+    public void setEfterNavn(String efterNavn) {
+        this.efterNavn = efterNavn;
+    }
+
     private String adresse;
 
-    public Patient(int cpr, String fornavn, String efternavn, Date dato, int cm, double vægt, int telefonNr, String adresse) {
-        this.cpr = cpr;
-        this.fornavn = fornavn;
-        this.efternavn = efternavn;
-        this.alder = dato;
-        this.højde = cm;
-        this.vægt = vægt;
-        this.telefonNr = telefonNr;
-        this.adresse = adresse;
-    }
 
     public int getCpr() {
         return cpr;
     }
 
-    public String getFornavn() {
-        return fornavn;
-    }
 
-    public void setFornavn(String fornavn) {
-        this.fornavn = fornavn;
-    }
-
-
-    public String getEfternavn() {
-        return efternavn;
-    }
-
-    public void setEfternavn(String efternavn) {
-        this.efternavn = efternavn;
-    }
-
-    public Date getAlder() {
-        return alder;
+    public DateTimeFormat getFødselsdato() {
+        return fødselsdato;
     }
 
     public int getHøjde() {
@@ -65,11 +71,11 @@ public class Patient {
         this.højde = cm;
     }
 
-    public double getVægt() {
+    public int getVægt() {
         return vægt;
     }
 
-    public void setVægt(double vægt) {
+    public void setVægt(int vægt) {
         this.vægt = vægt;
     }
 
@@ -90,18 +96,6 @@ public class Patient {
     }
 
 
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "cpr=" + cpr +
-                ", navn='" + fornavn + " " + efternavn + '\'' +
-                ", alder=" + alder +
-                ", højde=" + højde +
-                ", vægt=" + vægt +
-                ", telefonNr=" + telefonNr +
-                ", Adresse='" + adresse + '\'' +
-                '}';
-    }
-
-    // private List<Patient> patientList;
 }
+
+

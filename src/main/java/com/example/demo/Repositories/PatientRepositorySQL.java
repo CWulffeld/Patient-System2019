@@ -1,8 +1,8 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Configs.DBConfig;
-import com.example.demo.Models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
@@ -44,4 +44,26 @@ public class PatientRepositorySQL {
 
     }
 
+    public void insertPatienttoDB(String fornavn, String efternavn, int cpr, DateTimeFormat fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse) throws SQLException, ClassNotFoundException {
+        Statement stmt = DBConfig.getConnection().createStatement();
+
+
+        String sql_insertPatient = "INSERT INTO patient" +
+                "(Patient_fornavn, " +
+                "Patient_efterNavn, " +
+                "Patient_cpr, " +
+                "Patient_fødselsdato, "+
+                "Patient_telefonnr, " +
+                "Patient_adresse, " +
+                "Patient_højde, "+
+                "Patient_vægt, "+
+                "Patient_beskrivelse)" + "VALUES " +
+                 "(" + fornavn + efternavn + cpr + fødselsdato + telefonnr + adresse + højde + vægt + beskrivelse + ")";
+
+
+
+
+        stmt.execute(sql_insertPatient);
+        stmt.close();
+    }
 }
