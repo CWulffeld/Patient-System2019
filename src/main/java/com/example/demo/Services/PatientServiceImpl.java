@@ -34,4 +34,16 @@ public class PatientServiceImpl implements PatientService {
     }
 
 
+
+    @Override
+    public void tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
+
+            patientRepositorySQL.selectPatientCpr(cpr);
+
+
+
+
+    }
+
+
 }

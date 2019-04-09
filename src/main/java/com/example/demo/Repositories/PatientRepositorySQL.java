@@ -29,7 +29,7 @@ public class PatientRepositorySQL{
 
             String sql_createPatientTable = "CREATE TABLE IF NOT EXISTS patient" +
                 "(Patient_forNavn varchar (100)," +
-                "Patient_efterName varchar(100)," +
+                "Patient_efterNavn varchar(100)," +
                 "Patient_cpr int(4)," +
                 "Patient_fødselsdato DATE, " +
                 "Patient_telefonnr int (8)," +
@@ -72,6 +72,19 @@ public class PatientRepositorySQL{
 
         stmt.execute(sql_insertPatient);
         stmt.close();
+    }
+
+
+//SELECET DISTINCT. selecter patient cpr via argumentet. Bruges til at logge ind med
+    public void selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
+        Statement stmt = DBConfig.getConnection().createStatement();
+
+        String sql_selectPatientCpr = "SELECT patient_cpr From patient WHERE patient_cpr = " + cpr;
+
+
+        stmt.execute(sql_selectPatientCpr);
+        stmt.close();
+
     }
 
 }

@@ -32,14 +32,19 @@
 
 <section>
     <h2>Login</h2>
-    <form action="/login" method="post" id="login_form">
+
+    <form th:action="@{/login}" method="post" id="login_form">
+
+
+
+        </div>
 
         <label>Brugernavn</label>
-        <input type="text" name="Brugernavn" placeholder="Læge/sekretær ">
+        <input type="text" name="Brugernavn" placeholder="Læge/sekretær" th:text="${rolle}" >
         <!--<br> er et break-tag (skifter linje, så username og password ikke er på samme linje)-->
         <br>
         <label>Password</label>
-        <input type="password" name="Password" placeholder="Skriv patient CPR">
+        <input type="password" name="Password" placeholder="Skriv patient CPR" th:text="${cpr}" >
         </br>
         <input type="submit" value="Login">
     </form>
