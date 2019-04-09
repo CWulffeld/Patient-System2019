@@ -1,6 +1,7 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Configs.DBConfig;
+import com.example.demo.Models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -42,4 +43,5 @@ public class PatientRepositorySQL {
         stmt.close();
 
     }
+
 }
