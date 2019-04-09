@@ -11,28 +11,35 @@ import java.sql.Statement;
 public class PatientRepositorySQL {
 
 
-
-    @Autowired
-    DBConfig DB;
+//
+//    @Autowired
+//    DBConfig DB;
 
     public void createPatientTable() throws ClassNotFoundException, SQLException {
-
-        //Statement stmt = DB.connect();
-
-        //Statement stmtt = DB.connect().createStatement;
+        System.out.println("1");
 
 
-//                con().createStatement();
-//
-//        String sql_createTable = "CREATE TABLE products " +
-//                "(Pid int," +
-//                "Product_name varchar(100)," +
-//                "Product_price int," +
-//                "Product_location varchar(10)" +
-//                ")";
-//
-//        stmt.execute(sql_createTable);
-//        stmt.close();
+        Statement stmt = DBConfig.getConnection().createStatement();
+
+
+        System.out.println("5");
+
+            String sql_createPatientTable = "CREATE TABLE IF NOT EXISTS patient" +
+                "(Patient_forNavn varchar (100)," +
+                "Patient_efterName varchar(100)," +
+                "Patient_cpr int(4)," +
+                "Patient_fødselsdato DATE, " +
+                "Patient_telefonnr int (8)," +
+                "Patient_adresse varchar (100),"+
+                "Patient_højde int (4)," +
+                "Patient_vægt int (4)," +
+                "Patient_beskrivelse varchar (250)" +
+                ")";
+
+
+        System.out.println("2 - Det virker");
+        stmt.execute(sql_createPatientTable);
+        stmt.close();
 
     }
 }
