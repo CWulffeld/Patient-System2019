@@ -13,7 +13,7 @@ public class PatientServiceImpl implements PatientService {
 
 
     @Override
-    public void opretPatient(Patient patient) throws SQLException, ClassNotFoundException {
+    public void tilføjPatientDB(Patient patient) throws SQLException, ClassNotFoundException {
     patientRepositorySQL.insertPatienttoDB(patient.getForNavn()
             , patient.getEfterNavn()
             , patient.getCpr()
