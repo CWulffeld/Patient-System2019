@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLException;
+
 @Controller
 public class LægeController {
 
@@ -17,15 +19,17 @@ public class LægeController {
     PatientServiceImpl patientService;
 
     @GetMapping("/opretPatient")
-    public String submitPatient(){
+    public String submitPatient(Model model){
+
+        model.addAttribute("patient", new Patient());
         return "opretPatient";
     }
 
-    @PostMapping(value = "/opretPatient")
-    public String opretPatient (Patient patient){
+    @PostMapping("/opretPatient")
+    public String submitPatient (@ModelAttribute Patient patient) throws SQLException, ClassNotFoundException {
 
         patientService.opretPatient(patient);
-        return "home";
+        return "opretPatient";
     }
 
     @GetMapping("/opretReceptLæge")

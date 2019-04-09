@@ -11,9 +11,10 @@ public class Patient {
     private List<Patient> patientList;
 
     @Id
-    private int cpr;
+
     private String forNavn;
     private String efterNavn;
+    private int cpr;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private DateTimeFormat fødselsdato;
     private int højde;
@@ -22,16 +23,21 @@ public class Patient {
     private String adresse;
     private String kortBeskrivelse;
 
-    public void setFødselsdato(DateTimeFormat fødselsdato) {
-        this.fødselsdato = fødselsdato;
+    public Patient(String forNavn, String efterNavn, int cpr, DateTimeFormat fødselsdato, int højde, int vægt, int telefonNr, String adresse, String kortBeskrivelse){
+
+        this.forNavn=forNavn;
+        this.efterNavn=efterNavn;
+        this.cpr=cpr;
+        this.fødselsdato=fødselsdato;
+        this.højde=højde;
+        this.vægt=vægt;
+        this.telefonNr=telefonNr;
+        this.adresse=adresse;
+        this.kortBeskrivelse=kortBeskrivelse;
     }
 
-    public String getKortBeskrivelse() {
-        return kortBeskrivelse;
-    }
+    public Patient(){
 
-    public void setKortBeskrivelse(String kortBeskrivelse) {
-        this.kortBeskrivelse = kortBeskrivelse;
     }
 
     public String getForNavn() {
@@ -50,13 +56,18 @@ public class Patient {
         this.efterNavn = efterNavn;
     }
 
-
     public int getCpr() {
         return cpr;
     }
 
+    public void setCpr(int cpr){ this.cpr=cpr;}
+
     public DateTimeFormat getFødselsdato() {
         return fødselsdato;
+    }
+
+    public void setFødselsdato(DateTimeFormat fødselsdato) {
+        this.fødselsdato = fødselsdato;
     }
 
     public int getHøjde() {
@@ -91,7 +102,28 @@ public class Patient {
         this.adresse = adresse;
     }
 
+    public String getKortBeskrivelse() {
+        return kortBeskrivelse;
+    }
 
+    public void setKortBeskrivelse(String kortBeskrivelse) {
+        this.kortBeskrivelse = kortBeskrivelse;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "cpr=" + cpr +
+                ", fornavn='" + forNavn + '\'' +
+                ", efternavn='" + efterNavn + '\'' +
+                ", fødselsdato='" + fødselsdato + '\'' +
+                ", højde=" + højde + '\'' +
+                ", vægt=" + vægt + '\'' +
+                ", telefonNr=" + telefonNr + '\'' +
+                ", adresse=" + adresse + '\'' +
+                ", kortBeskrivelse=" + kortBeskrivelse +
+                '}';
+    }
 }
 
 

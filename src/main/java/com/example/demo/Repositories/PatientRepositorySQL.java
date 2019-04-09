@@ -58,7 +58,7 @@ public class PatientRepositorySQL {
                 "Patient_højde, "+
                 "Patient_vægt, "+
                 "Patient_beskrivelse)" + "VALUES " +
-                 "(" + fornavn + efternavn + cpr + fødselsdato + telefonnr + adresse + højde + vægt + beskrivelse + ")";
+                 "('" + fornavn + "'," + efternavn + "'," + cpr + "'," + fødselsdato + "'," + telefonnr + "'," + adresse + "'," + højde + "'," + vægt + "'," + beskrivelse + "')";
 
 
 
