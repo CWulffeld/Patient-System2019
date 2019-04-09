@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.Date;
 
 @Repository
-public class PatientRepositorySQL {
+public class PatientRepositorySQL{
 
 
 //

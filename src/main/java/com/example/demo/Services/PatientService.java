@@ -7,5 +7,5 @@ import java.sql.SQLException;
 public interface PatientService {
 
 
-     void opretPatient(Patient patient) throws SQLException, ClassNotFoundException;
+     void OpretPatient(Patient patient) throws SQLException, ClassNotFoundException;
 }
