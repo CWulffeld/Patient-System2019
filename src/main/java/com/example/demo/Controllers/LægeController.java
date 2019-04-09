@@ -15,24 +15,29 @@ import java.sql.SQLException;
 @Controller
 public class LægeController {
 
-    //PatientService patientService;
-    PatientServiceImpl patientService;
+    PatientService patientService;
+    //PatientServiceImpl patientService;
 
     @GetMapping("/opretPatient")
-    public String opretPatient(){
+    public String submitPatient(){
         return "opretPatient";
     }
 
-    @PostMapping(value = "/opretPatient")
-    public String submitPatient (Patient patient) throws SQLException, ClassNotFoundException {
+    @PostMapping("/opretPatient")
+    public String submitPatient (@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException {
+//        model.addAttribute(new Patient());
+//        model.addAttribute("Fornavn" , patient.getForNavn());
+//        model.addAttribute("Efternavn", patient.getEfterNavn());
+//        model.addAttribute("CPR.nr" , patient.getCpr());
+//        model.addAttribute("Fødselsdato", patient.getFødselsdato());
+//        model.addAttribute("Telefon nummer", patient.getTelefonNr());
+//        model.addAttribute("Adresse", patient.getAdresse());
+//        model.addAttribute("Højde" , patient.getHøjde());
+//        model.addAttribute("Vægt", patient.getVægt());
+//        model.addAttribute("Kort beskrivelse" , patient.getKortBeskrivelse());
 
-        try {
-            patientService.tilføjPatientDB(patient);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        patientService.OpretPatient(patient);
+
         return "home";
     }
 

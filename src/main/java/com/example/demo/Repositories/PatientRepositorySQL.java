@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 @Repository
-public class PatientRepositorySQL {
+public class PatientRepositorySQL{
 
 
 //
@@ -44,7 +45,7 @@ public class PatientRepositorySQL {
 
     }
 
-    public void insertPatienttoDB(String fornavn, String efternavn, int cpr, DateTimeFormat fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse) throws SQLException, ClassNotFoundException {
+    public void insertPatientToDB(String fornavn, String efternavn, int cpr, Date fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse) throws SQLException, ClassNotFoundException {
         Statement stmt = DBConfig.getConnection().createStatement();
 
 

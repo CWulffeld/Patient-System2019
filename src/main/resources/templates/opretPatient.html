@@ -22,39 +22,39 @@
         <form method="post" th:action="@{/opretPatient}" id="opret_patient">
 
             <label> Fornavn: </label>
-            <input type="text" name="Fornavn" placeholder="Fornavn" id="fornavn" value="" th:value="@{}">
+            <input type="text" name="Fornavn" placeholder="Fornavn" id="fornavn" >
             <br>
 
             <label> Efternavn: </label>
-            <input type="text" name="Efternavn" placeholder="Efternavn" id="efternavn" th:field="${patient.efternavn}">
+            <input type="text" name="Efternavn" placeholder="Efternavn" id="efternavn">
             <br>
 
             <label> CPR nr: </label>
-            <input type="number" name="CPR.nr" placeholder="CPR.nr" id="cpr.nr" th:field="${patient.cpr}">
+            <input type="number" name="CPR.nr" placeholder="CPR.nr" id="cpr.nr" >
             <br>
 
             <label> Fødselsdato: </label>
-            <input type="date" name="Fødselsdato" placeholder="Fødselsdato" id="fødselsdato" th:field="${patient.fødselsdato}">
+            <input type="date" name="Fødselsdato" placeholder="Fødselsdato" id="fødselsdato" >
             <br>
 
             <label> Telefon nr: </label>
-            <input type="number" name="Telefon nummer" placeholder="Telefon nummer" id="telefon.nr" th:field="${patient.telefonNr}">
+            <input type="number" name="Telefon nummer" placeholder="Telefon nummer" id="telefon.nr" >
             <br>
 
             <label> Adresse: </label>
-            <input type="text" name="Adresse" placeholder="Adresse" id="adresse" th:field="${patient.adresse}">
+            <input type="text" name="Adresse" placeholder="Adresse" id="adresse" >
             <br>
 
             <label> Højde: </label>
-            <input type="number" name="Højde" placeholder="Højde" id="højde" th:field="${patient.højde}">
+            <input type="number" name="Højde" placeholder="Højde" id="højde" >
             <br>
 
             <label> Vægt: </label>
-            <input type="number" name="Vægt" placeholder="Vægt" id="vægt" th:field="${patient.vægt}">
+            <input type="number" name="Vægt" placeholder="Vægt" id="vægt">
             <br>
 
             <label> Kort beskrivelse af patient: </label>
-            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="comment" th:field ="${patient.kortBeskrivelse}"></textarea>
+            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="comment" ></textarea>
             <br>
 
             <input type="submit" value="Opret patient">
