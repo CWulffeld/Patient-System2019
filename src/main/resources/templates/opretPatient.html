@@ -34,7 +34,7 @@
             <br>
 
             <label> Fødselsdato: </label>
-            <input type="date" name="Fødselsdato" placeholder="Fødselsdato" id="fødselsdato" th:field="${patient.alder}">
+            <input type="date" name="Fødselsdato" placeholder="Fødselsdato" id="fødselsdato" th:field="${patient.fødselsdato}">
             <br>
 
             <label> Telefon nr: </label>
@@ -54,7 +54,7 @@
             <br>
 
             <label> Kort beskrivelse af patient: </label>
-            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="comment" th:field ="${patient.}"></textarea>
+            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="comment" th:field ="${patient.kortBeskrivelse}"></textarea>
             <br>
 
             <input type="submit" value="Opret patient">
