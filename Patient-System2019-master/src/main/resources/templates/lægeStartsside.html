@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Læge startsside</title>
+</head>
+<body>
+
+<header>
+    <div th:insert="fragments/header :: header"></div>
+</header>
+
+<div th:insert="fragments/sidebarLægeOpretPatient :: sidebarLægeOpretPatient"></div>
+
+
+
+<div class="sidenav">
+    <a href="/opretPatient">Opret patient</a>
+    <a href="/login">Login</a>
+
+</div>
+
+<div id="wrapper">
+    <h1> Hej Læge</h1>
+    <h2> Vælg mellem at oprette en ny patient eller logge ind med en allerede eksisterende patient. Benyt patient cpr</h2>
+</div>
+
+
+</body>
+</html>

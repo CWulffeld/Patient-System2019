@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Diagnose </title>
+    <style>
+
+    #opret_diagnose input {
+    margin-top: 10px;
+    }
+
+    </style>
+</head>
+<body>
+<header>
+    <div th:insert="fragments/header :: header"></div>
+</header>
+
+<div th:insert="fragments/sidebarLæge :: sidebarLæge"></div>
+<div id="wrapper">
+        <h1> Opret diagnose</h1>
+    <section>
+
+        <form action="/??" method="post" id="opret_diagnose">
+
+            <label> Information 1:</label>
+            <input type="text" name="information 1" placeholder="information 1 ">
+            <br>
+            <label> Information 2:</label>
+            <input type="text" name="information 2" placeholder="information 2 ">
+            <br>
+            <input type="submit" value="Opret diagnose">
+        </form>
+    </section>
+
+
+
+</div>
+
+</body>
+</html>
