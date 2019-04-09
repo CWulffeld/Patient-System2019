@@ -29,6 +29,7 @@ public class LægeController {
     public String submitPatient (@ModelAttribute Patient patient) throws SQLException, ClassNotFoundException {
 
         patientService.opretPatient(patient);
+
         return "opretPatient";
     }
 

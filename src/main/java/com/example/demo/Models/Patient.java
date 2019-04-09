@@ -16,23 +16,23 @@ public class Patient {
     private String efterNavn;
     private int cpr;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private DateTimeFormat fødselsdato;
+    private Date fødselsdato;
     private int højde;
     private int vægt;
     private int telefonNr;
     private String adresse;
     private String kortBeskrivelse;
 
-    public Patient(String forNavn, String efterNavn, int cpr, DateTimeFormat fødselsdato, int højde, int vægt, int telefonNr, String adresse, String kortBeskrivelse){
+    public Patient(String forNavn, String efterNavn, int cpr, Date fødselsdato, int telefonNr, String adresse, int højde, int vægt, String kortBeskrivelse){
 
         this.forNavn=forNavn;
         this.efterNavn=efterNavn;
         this.cpr=cpr;
         this.fødselsdato=fødselsdato;
-        this.højde=højde;
-        this.vægt=vægt;
         this.telefonNr=telefonNr;
         this.adresse=adresse;
+        this.højde=højde;
+        this.vægt=vægt;
         this.kortBeskrivelse=kortBeskrivelse;
     }
 
@@ -62,28 +62,12 @@ public class Patient {
 
     public void setCpr(int cpr){ this.cpr=cpr;}
 
-    public DateTimeFormat getFødselsdato() {
+    public Date getFødselsdato() {
         return fødselsdato;
     }
 
-    public void setFødselsdato(DateTimeFormat fødselsdato) {
+    public void setFødselsdato(Date fødselsdato) {
         this.fødselsdato = fødselsdato;
-    }
-
-    public int getHøjde() {
-        return højde;
-    }
-
-    public void setHøjde(int cm) {
-        this.højde = cm;
-    }
-
-    public int getVægt() {
-        return vægt;
-    }
-
-    public void setVægt(int vægt) {
-        this.vægt = vægt;
     }
 
     public int getTelefonNr() {
@@ -102,6 +86,22 @@ public class Patient {
         this.adresse = adresse;
     }
 
+    public int getHøjde() {
+        return højde;
+    }
+
+    public void setHøjde(int cm) {
+        this.højde = cm;
+    }
+
+    public int getVægt() {
+        return vægt;
+    }
+
+    public void setVægt(int vægt) {
+        this.vægt = vægt;
+    }
+
     public String getKortBeskrivelse() {
         return kortBeskrivelse;
     }
@@ -112,15 +112,15 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" +
-                "cpr=" + cpr +
-                ", fornavn='" + forNavn + '\'' +
+        return "patient{" +
+                "fornavn='" + forNavn + '\'' +
                 ", efternavn='" + efterNavn + '\'' +
+                ", cpr=" + cpr + '\'' +
                 ", fødselsdato='" + fødselsdato + '\'' +
-                ", højde=" + højde + '\'' +
-                ", vægt=" + vægt + '\'' +
                 ", telefonNr=" + telefonNr + '\'' +
                 ", adresse=" + adresse + '\'' +
+                ", højde=" + højde + '\'' +
+                ", vægt=" + vægt + '\'' +
                 ", kortBeskrivelse=" + kortBeskrivelse +
                 '}';
     }

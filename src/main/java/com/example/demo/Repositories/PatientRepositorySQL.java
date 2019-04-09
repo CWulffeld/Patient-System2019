@@ -1,12 +1,14 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Configs.DBConfig;
+import com.example.demo.Models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 @Repository
 public class PatientRepositorySQL {
@@ -44,7 +46,7 @@ public class PatientRepositorySQL {
 
     }
 
-    public void insertPatienttoDB(String fornavn, String efternavn, int cpr, DateTimeFormat fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse) throws SQLException, ClassNotFoundException {
+    public void insertPatienttoDB(String fornavn, String efternavn, int cpr, Date fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse) throws SQLException, ClassNotFoundException {
         Statement stmt = DBConfig.getConnection().createStatement();
 
 
@@ -66,4 +68,5 @@ public class PatientRepositorySQL {
         stmt.execute(sql_insertPatient);
         stmt.close();
     }
+
 }

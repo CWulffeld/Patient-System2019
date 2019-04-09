@@ -24,4 +24,6 @@ public class PatientServiceImpl implements PatientService {
             , patient.getVægt()
             , patient.getKortBeskrivelse());
     }
+
+
 }
