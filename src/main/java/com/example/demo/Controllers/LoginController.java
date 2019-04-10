@@ -26,7 +26,7 @@ public class LoginController {
     }
 
 
-   //Virker ikke rigtigt endnu. Den tester for læge/sekretær, men ikke for cpr.Den ved godt dog godt den skal have en int som input.
+   //Virker ikke rigtigt endnu. Den tester for læge/sekretær, men ikke for cpr.Den ved dog godt den skal have en int som input.
     @PostMapping("/login")
     public String login(Patient patient, Model model, Bruger bruger) throws SQLException, ClassNotFoundException {
 
