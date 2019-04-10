@@ -1,9 +1,7 @@
 //package com.example.demo.Models;
 //
-//import javax.xml.bind.annotation.XmlRootElement;
 //import java.util.Date;
 //
-//@XmlRootElement
 //public class Recept {
 //    private String patientNavn;
 //    private int cpr;
