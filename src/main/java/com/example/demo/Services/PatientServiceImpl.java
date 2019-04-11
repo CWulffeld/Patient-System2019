@@ -17,40 +17,37 @@ public class PatientServiceImpl implements PatientService {
     PatientRepositorySQL patientRepositorySQL;
 
 
-
-   // private PatientRepository patientRepository;
+    // private PatientRepository patientRepository;
 
 
     @Override
     public void opretPatient(Patient patient) throws SQLException, ClassNotFoundException {
-    patientRepositorySQL.insertPatienttoDB(patient.getForNavn()
-            , patient.getEfterNavn()
-            , patient.getCpr()
-            , patient.getFødselsdato()
-            , patient.getTelefonNr()
-            , patient.getAdresse()
-            , patient.getHøjde()
-            , patient.getVægt()
-            , patient.getKortBeskrivelse());
+        patientRepositorySQL.insertPatienttoDB(patient.getForNavn()
+                , patient.getEfterNavn()
+                , patient.getCpr()
+                , patient.getFødselsdato()
+                , patient.getTelefonNr()
+                , patient.getAdresse()
+                , patient.getHøjde()
+                , patient.getVægt()
+                , patient.getKortBeskrivelse());
 
 
-    //patientRepository.save(patient);
+        //patientRepository.save(patient);
     }
 
 
-
-
-//Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
+    //Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
     @Override
-    public void tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
-        Patient patient;
-        patientRepositorySQL.selectPatientCpr(cpr);
+    public boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
+        boolean fundetCpr = patientRepositorySQL.selectPatientCpr(cpr);
+        return fundetCpr;
+    }
 
-//            if (patient.getCpr() == cpr) {
-//                return cpr;
-//            }
-//
-//            return 0;
+    @Override
+    public Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException {
+        Patient fundetPatient = patientRepositorySQL.FindPatientData(cpr);
+        return fundetPatient;
     }
 
 

@@ -1,10 +1,12 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Configs.DBConfig;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Repository
 public class ReceptRepositorySQL {
     public void createReceptTable() throws ClassNotFoundException, SQLException {
         String sql_createReceptTable = "CREATE TABLE IF NOT EXISTS recept" +
