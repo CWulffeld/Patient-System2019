@@ -17,30 +17,27 @@ public class PatientServiceImpl implements PatientService {
     PatientRepositorySQL patientRepositorySQL;
 
 
-
-   // private PatientRepository patientRepository;
+    // private PatientRepository patientRepository;
 
 
     @Override
     public void opretPatient(Patient patient) throws SQLException, ClassNotFoundException {
-    patientRepositorySQL.insertPatienttoDB(patient.getForNavn()
-            , patient.getEfterNavn()
-            , patient.getCpr()
-            , patient.getFødselsdato()
-            , patient.getTelefonNr()
-            , patient.getAdresse()
-            , patient.getHøjde()
-            , patient.getVægt()
-            , patient.getKortBeskrivelse());
+        patientRepositorySQL.insertPatienttoDB(patient.getForNavn()
+                , patient.getEfterNavn()
+                , patient.getCpr()
+                , patient.getFødselsdato()
+                , patient.getTelefonNr()
+                , patient.getAdresse()
+                , patient.getHøjde()
+                , patient.getVægt()
+                , patient.getKortBeskrivelse());
 
 
-    //patientRepository.save(patient);
+        //patientRepository.save(patient);
     }
 
 
-
-
-//Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
+    //Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
     @Override
     public boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
         boolean fundetCpr = patientRepositorySQL.selectPatientCpr(cpr);

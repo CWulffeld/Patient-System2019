@@ -22,6 +22,12 @@
             margin-top: 10px;
         }
 
+        .error{
+            color: red;
+            border: red;
+
+        }
+
     </style>
 </head>
 <body>
@@ -33,8 +39,15 @@
 <section>
     <h2>Login</h2>
 
+
     <form th:action="@{/login}" method="post" id="login_form">
 
+    <div th:if="${error}">
+        <div class="error">
+            <h3>Forkert brugernvn eller cpr.nr</h3>
+            <h3> Prøv igen</h3>
+        </div>
+    </div>
 
 
         </div>

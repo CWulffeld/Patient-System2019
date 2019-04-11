@@ -32,17 +32,18 @@ public class LoginController {
 
        // patientService.tjekLogin(patient.getCpr());
 
-        if(patientService.tjekLogin(patient.getCpr())){
-            if (bruger.getRolle().equalsIgnoreCase("Læge")){
-                System.out.println(patient.getCpr());
-                return "lægeHome";
+
+            if (patientService.tjekLogin(patient.getCpr())) {
+                if (bruger.getRolle().equalsIgnoreCase("Læge")) {
+                    System.out.println(patient.getCpr());
+                    return "lægeHome";
+                } else if (bruger.getRolle().equalsIgnoreCase("Sekretær")) {
+                    System.out.println(patient.getCpr());
+                    return "sekretærHome";
+                }
             }
-            else  if (bruger.getRolle().equalsIgnoreCase("Sekretær")){
-                System.out.println(patient.getCpr());
-                return "sekretærHome";
-            }
-        }
-        return "login";
+            model.addAttribute("error", true);
+            return "login";
 
         //return "lægeHome";
     }
