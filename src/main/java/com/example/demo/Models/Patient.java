@@ -10,17 +10,17 @@ public class Patient {
 
     private List<Patient> patientList;
 
-    private String forNavn;
-    private String efterNavn;
+    private String forNavn= "ingenting";
+    private String efterNavn= "ingenting";
     @Id
-    private int cpr;
+    private int cpr=0;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String fødselsdato;
-    private int højde;
-    private int vægt;
-    private int telefonNr;
-    private String adresse;
-    private String kortBeskrivelse;
+    private String fødselsdato = "ingenting";
+    private int højde = 0;
+    private int vægt= 0;
+    private int telefonNr = 0;
+    private String adresse ="ingenting";
+    private String kortBeskrivelse="ingenting";
 
     public Patient(String forNavn, String efterNavn, int cpr, String fødselsdato, int telefonNr, String adresse, int højde, int vægt, String kortBeskrivelse){
 
@@ -111,17 +111,16 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "patient{" +
-                "fornavn='" + forNavn + '\'' +
-                ", efternavn='" + efterNavn + '\'' +
-                ", cpr=" + cpr + '\'' +
-                ", fødselsdato='" + fødselsdato + '\'' +
-                ", telefonNr=" + telefonNr + '\'' +
-                ", adresse=" + adresse + '\'' +
-                ", højde=" + højde + '\'' +
-                ", vægt=" + vægt + '\'' +
-                ", kortBeskrivelse=" + kortBeskrivelse +
-                '}';
+        return "patient: \n" +
+                "Fornavn = " + forNavn + '\'' +
+                "\n , Efternavn = " + efterNavn + '\'' +
+                "\n , Cpr = " + cpr + '\'' +
+                "\n , Fødselsdato = " + fødselsdato + '\'' +
+                "\n , telefonNr = " + telefonNr + '\'' +
+                "\n , adresse = " + adresse + '\'' +
+                "\n , højde = " + højde + '\'' +
+                "\n , vægt = " + vægt + '\'' +
+                "\n , kortBeskrivelse = " + kortBeskrivelse;
     }
 }
 

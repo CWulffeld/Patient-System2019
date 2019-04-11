@@ -2,8 +2,10 @@ package com.example.demo.Controllers;
 
 
 import com.example.demo.Models.Diagnose;
+import com.example.demo.Models.Konsultation;
 import com.example.demo.Models.Patient;
 import com.example.demo.Services.DiagnoseService;
+import com.example.demo.Services.KonsultationService;
 import com.example.demo.Services.PatientService;
 import com.example.demo.Services.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class LægeController {
     @Autowired
     DiagnoseService diagnoseService;
 
+    @Autowired
+    KonsultationService konsultationService;
+
     @GetMapping("/opretPatient")
     public String submitPatient(Model model){
         model.addAttribute("patient", new Patient());
@@ -35,7 +40,7 @@ public class LægeController {
     }
 
     @PostMapping("/opretPatient")
-    public String submitPatient (@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException {
+    public String submitPatient (@ModelAttribute Patient patient) throws SQLException, ClassNotFoundException {
         patientService.opretPatient(patient);
 
         return "opretPatient";
@@ -47,9 +52,21 @@ public class LægeController {
     }
 
     @GetMapping("/opretKonsultation")
-    public String opretKonsultation() {
+    public String opretKonsultation(Model model) {
+        model.addAttribute("konsultation", new Konsultation());
+
         return "opretKonsultation";
     }
+
+    @PostMapping("/opretKonsultation")
+    public String opretKonsultation(@ModelAttribute Konsultation konsultation, Model model) throws SQLException, ClassNotFoundException {
+        System.out.println("step 1");
+        konsultationService.opretKonsultation(konsultation);
+        System.out.println("step 2");
+        return "opretKonsultation";
+    }
+
+
 
     @GetMapping("/tildelDiagnose")
     public String tildelDiagnose(Model model) {
@@ -61,12 +78,18 @@ public class LægeController {
     @PostMapping("/tildelDiagnose")
     public String tildelDiagnose(@ModelAttribute Diagnose diagnose, Model model) throws SQLException, ClassNotFoundException {
 
-        diagnoseService.tildelDiagnose(diagnose);
+        diagnoseService.opretDiagnose(diagnose);
         return "tildelDiagnose";
     }
 
     @GetMapping("/patientInformationer")
-    public String patientInformationer(){
+    public String patientInformationer(Model model, Patient patient) throws SQLException, ClassNotFoundException {
+
+        patientService.FindPatient(patient.getCpr());
+        model.addAttribute("fornavn", patient.getForNavn());
+        model.addAttribute("efternavn", patient.getEfterNavn());
+        model.addAttribute("cpr", patient.getCpr());
+
         return "patientinformationer";
     }
 

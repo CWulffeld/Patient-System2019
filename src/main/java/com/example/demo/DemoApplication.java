@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.Models.Konsultation;
 import com.example.demo.Repositories.DiagnoseRepositorySQL;
+import com.example.demo.Repositories.KonsultationRepositorySQL;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,7 +19,8 @@ public class DemoApplication {
 //        diagnoseRepositorySQL.createDiagnoseTable();
 
 
-
+//        KonsultationRepositorySQL konsultationRepositorySQL = new KonsultationRepositorySQL();
+//        konsultationRepositorySQL.createKonsultationTable();
     }
 
 

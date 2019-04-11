@@ -22,16 +22,16 @@
     <h1> Patientkonsultation </h1>
 <section>
 
-    <form action="/??" method="post" id="opret_konsultation">
+    <form th:action="@{/opretKonsultation}" method="post" id="opret_konsultation">
 
         <label>Beskrivelse:</label>
-        <textarea type="text" name="Beskrivelse" placeholder="Beskrivelse"></textarea>
+        <textarea type="text" name="Beskrivelse" placeholder="Beskrivelse" th:field="${konsultation.beskrivelse}"></textarea>
         <br>
         <label>Konklusion:</label>
-        <textarea type="text" name="konklusion" placeholder="Konklusion"></textarea>
+        <textarea type="text" name="konklusion" placeholder="Konklusion" th:field="${konsultation.konklusion}"></textarea>
         <br>
         <label>Dato:</label>
-        <input type="date" name="dato" placeholder="dato" id="dato">
+        <input type="date" name="dato" placeholder="dato" id="dato" th:field="${konsultation.dato}">
         <br>
 
         <input type="submit" value="Opret konsultation">

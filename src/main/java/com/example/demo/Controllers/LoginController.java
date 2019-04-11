@@ -31,6 +31,10 @@ public class LoginController {
         Patient loggedIn;
        // patientService.tjekLogin(patient.getCpr());
 
+
+        model.addAttribute("cpr", patientService.FindPatient(patient.getCpr()));
+
+
         if(patientService.tjekLogin(patient.getCpr())){
             if (bruger.getRolle().equalsIgnoreCase("Læge")){
                 System.out.println(patient.getCpr());

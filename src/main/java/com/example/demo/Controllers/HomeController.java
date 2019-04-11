@@ -15,6 +15,10 @@ import java.sql.SQLException;
 @Controller
 public class HomeController {
 
+
+@Autowired
+PatientService patientService;
+
     /*
     @RequestMapping(value = "/username", method = RequestMethod.GET)
     @ResponseBody
@@ -30,10 +34,14 @@ public class HomeController {
     }
 
     @GetMapping("/lægeHome")
-    public String lægeHome() {
-
+    public String lægeHome(Model model, Patient patient) throws SQLException, ClassNotFoundException {
+//            model.addAttribute("fornavn", patient.getForNavn());
+//            model.addAttribute("efternavn", patient.getEfterNavn());
+//            model.addAttribute("cpr", patient.getCpr());
+        model.addAttribute("cpr", patientService.FindPatient(patient.getCpr()));
         return "lægeHome";
     }
+
 
     @GetMapping("/sekretærHome")
     public String sekretærHome() {

@@ -4,9 +4,11 @@ import com.example.demo.Models.Bruger;
 import com.example.demo.Models.Diagnose;
 import com.example.demo.Repositories.DiagnoseRepositorySQL;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 
+@Repository
 public class DiagnoseServiceImpl implements DiagnoseService {
 
     @Autowired

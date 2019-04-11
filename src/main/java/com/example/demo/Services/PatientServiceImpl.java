@@ -40,6 +40,8 @@ public class PatientServiceImpl implements PatientService {
     //Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
     @Override
     public boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
+        Patient patient = new Patient();
+        patient.setCpr(cpr);
         boolean fundetCpr = patientRepositorySQL.selectPatientCpr(cpr);
         return fundetCpr;
     }
@@ -49,6 +51,8 @@ public class PatientServiceImpl implements PatientService {
         Patient fundetPatient = patientRepositorySQL.FindPatientData(cpr);
         return fundetPatient;
     }
+
+
 
 
 }
