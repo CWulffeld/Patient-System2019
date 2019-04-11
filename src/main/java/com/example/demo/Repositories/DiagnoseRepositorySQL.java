@@ -20,7 +20,7 @@ public class DiagnoseRepositorySQL {
                 "Medicin_navn varchar(100) NOT NULL, " +
                 "Diagnose_note varchar(100)," +
                 "Diagnose_udstedt DATE NOT NULL," +
-                "PRIMARY KEY(Patient_cpr)" +
+                "PRIMARY KEY()" +
                 ")";
 
                 /* Den der stod her før hvis den skal bruges.

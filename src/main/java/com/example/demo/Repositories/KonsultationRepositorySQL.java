@@ -14,7 +14,7 @@ public class KonsultationRepositorySQL {
                 "Konsultation_beskrivelse varchar(500), " +
                 "Konsultation_konklusion varchar(100)," +
                 "Konsultation_dato DATE NOT NULL,"+
-                "PRIMARY KEY(patient_cpr)" +
+                "PRIMARY KEY()" +
                 ")";
         SQLExecute(sql_createKonultationTable);
     }

@@ -36,9 +36,6 @@ public class HomeController {
     }
 
 
-
-
-
     @GetMapping("/lægeStartsside")
     public String lægeStartsside(){
         return "lægeStartsside";

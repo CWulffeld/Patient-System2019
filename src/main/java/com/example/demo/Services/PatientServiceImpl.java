@@ -7,6 +7,7 @@ import com.example.demo.Repositories.PatientRepositorySQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Service
@@ -42,22 +43,14 @@ public class PatientServiceImpl implements PatientService {
 //Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
     @Override
     public void tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
-       Patient patient = new Patient();
+        Patient patient;
+        patientRepositorySQL.selectPatientCpr(cpr);
 
-
-
-            patientRepositorySQL.selectPatientCpr(cpr);
-
-
-//
 //            if (patient.getCpr() == cpr) {
 //                return cpr;
 //            }
 //
 //            return 0;
-
-
-
     }
 
 

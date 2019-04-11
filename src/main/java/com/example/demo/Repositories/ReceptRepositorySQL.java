@@ -14,7 +14,7 @@ public class ReceptRepositorySQL {
                 "Recept_note varchar(200),"+
                 "Medicin_navn varchar(100) NOT NULL," +
                 "Recept_udstedt DATE NOT NULL," +
-                "PRIMARY KEY(Patient_cpr)" +
+                "PRIMARY KEY()" +
                 ")";
 
         SQLExecute(sql_createReceptTable);

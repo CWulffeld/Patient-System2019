@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
@@ -51,16 +52,15 @@ public class PatientRepositorySQL{
                 cpr + "', '" +
                 fødselsdato + "', '" + telefonnr + "', '" + adresse + "', '" + højde + "', '" + vægt + "', '" + beskrivelse + "')";
         SQLExecute(sql_insertPatient);
-
     }
-
 
     //SELECT DISTINCT. selecter patient cpr via argumentet.
-    public void selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
+    public ResultSet selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
         String sql_selectPatientCpr = "SELECT patient_cpr From patient WHERE patient_cpr = " + cpr;
-        SQLExecute(sql_selectPatientCpr);
-
+        ResultSet rs = SQLExecuteQuery(sql_selectPatientCpr);
+        return rs;
     }
+
     //Sorter table via parametre
     public void SorterViaFornavn() throws ClassNotFoundException, SQLException{
         String SortViaEfternavn = "SELECT * FROM patient ORDER BY Patient_fornavn ASC|DESC";
@@ -100,6 +100,19 @@ public class PatientRepositorySQL{
     private void SQLExecute(String SQL) throws ClassNotFoundException, SQLException{
         Statement stmt = DBConfig.getConnection().createStatement();
         stmt.execute(SQL);
+        stmt.close();
+    }
+
+    private ResultSet SQLExecuteQuery(String SQL) throws ClassNotFoundException, SQLException{
+        Statement stmt = DBConfig.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery(SQL);
+        stmt.close();
+        return rs;
+    }
+
+    private void SQLExecuteUpdate(String SQL) throws ClassNotFoundException, SQLException{
+        Statement stmt = DBConfig.getConnection().createStatement();
+        stmt.executeUpdate(SQL);
         stmt.close();
     }
 }

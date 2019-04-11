@@ -10,10 +10,9 @@ public class Patient {
 
     private List<Patient> patientList;
 
-    @Id
-
     private String forNavn;
     private String efterNavn;
+    @Id
     private int cpr;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String fødselsdato;
