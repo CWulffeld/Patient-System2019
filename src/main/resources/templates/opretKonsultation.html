@@ -19,17 +19,21 @@
 
 
 <div id="wrapper">
-    <h1> Opret konsultation </h1>
+    <h1> Patientkonsultation </h1>
 <section>
 
     <form action="/??" method="post" id="opret_konsultation">
 
-        <label> Information 1:</label>
-    <input type="text" name="information 1" placeholder="information 1 ">
+        <label>Beskrivelse:</label>
+        <textarea type="text" name="Beskrivelse" placeholder="Beskrivelse"></textarea>
         <br>
-        <label> Information 2:</label>
-        <input type="text" name="information 2" placeholder="information 2 ">
+        <label>Konklusion:</label>
+        <textarea type="text" name="konklusion" placeholder="Konklusion"></textarea>
         <br>
+        <label>Dato:</label>
+        <input type="date" name="dato" placeholder="dato" id="dato">
+        <br>
+
         <input type="submit" value="Opret konsultation">
     </form>
 </section>

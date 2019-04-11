@@ -11,7 +11,7 @@ public class Diagnose {
     private String patientEfternavn;
     private int cpr;
     private String diagnose;
-    private String Medicin;
+    private String medicin;
     private String note;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String dato;
@@ -22,10 +22,12 @@ public class Diagnose {
         this.patientEfternavn = patientEfternavn;
         this.cpr = cpr;
         this.diagnose = diagnose;
-        Medicin = medicin;
+        this.medicin= medicin;
         this.note = note;
         this.dato = dato;
     }
+
+    public Diagnose(){}
 
     public String getPatientFornavn() {
         return patientFornavn;
@@ -44,7 +46,7 @@ public class Diagnose {
     }
 
     public String getMedicin() {
-        return Medicin;
+        return medicin;
     }
 
     public String getNote() {

@@ -21,15 +21,31 @@
         <h1> Tildel diagnose</h1>
     <section>
 
-        <form action="/??" method="post" id="opret_diagnose">
+        <form method="post" th:action="@{/tildelDiagnose}" id="tildelDiagnose">
 
-            <label> Information 1:</label>
-            <input type="text" name="information 1" placeholder="information 1 ">
+            <!--<label> Patient fornavn:</label>-->
+            <!--<input type="text" name="fornavn" placeholder="Fornavn" id="fornavn" th:field="${diagnose.patientFornavn}">-->
+            <!--<br>-->
+            <!--<label> Patient efternavn:</label>-->
+            <!--<input type="text" name="efternavn" placeholder="Efternavn" id="efternavn" th:field="${diagnose.patientEfternavn}">-->
+            <!--<br>-->
+            <!--<label> Patient CPR:</label>-->
+            <!--<input type="number" name="cpr" placeholder="CRP-nr" id="cpr" th:field="${diagnose.cpr}">-->
+            <!--<br>-->
+            <label> Diagnose:</label>
+            <input type="text" name="diagnose" placeholder="Diagnose" id="diagnose" th:field="${diagnose.diagnose}">
             <br>
-            <label> Information 2:</label>
-            <input type="text" name="information 2" placeholder="information 2 ">
+            <label> Medicin:</label>
+            <input type="text" name="medicin" placeholder="Medicin" id="medicin" th:field="${diagnose.medicin}">
             <br>
-            <input type="submit" value="Opret diagnose">
+            <label> Kort note:</label>
+            <textarea type="kort-note" name="note" placeholder="Kort note" id="note" th:field="${diagnose.note}"></textarea>
+            <br>
+            <label> Dato for diagnose:</label>
+            <input type="date" name="dato" placeholder="dato" id="udstedt" th:field="${diagnose.dato}">
+            <br>
+            <br>
+            <input type="submit" value="Tildel diagnose">
         </form>
     </section>
 

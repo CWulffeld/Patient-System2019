@@ -44,7 +44,7 @@ public class DiagnoseRepositorySQL {
                 "Diagnose_udstedt, " +
                 "VALUES " +
                 "('" + fornavn + "', '" + efternavn +
-                "', '" + cpr + "', '" + diagnose +
+                "', " + cpr + ", '" + diagnose +
                 "', '" + note + "'. '" + medicin+
                 "', '" + udstedt +
                 "')";

@@ -23,14 +23,18 @@
         <h1> Opret recept</h1>
     <section>
 
-        <form action="/??" method="post" id="opret_recept">
+        <form action="/opretReceptLæge" method="post" id="opret_recept">
 
-            <label> Information 1:</label>
-            <input type="text" name="information 1" placeholder="information 1 ">
+            <label> Medicin:</label>
+            <input type="text" name="medicinnavn" placeholder="Medicin ">
             <br>
-            <label> Information 2:</label>
-            <input type="text" name="information 2" placeholder="information 2 ">
+            <label> Kort Note:</label>
+            <textarea type="text" name="note" placeholder="Kort note"></textarea>
             <br>
+            <label> Dato:</label>
+            <input type="date" name="dato" placeholder="dato ">
+            <br>
+
             <input type="submit" value="Opret recept">
         </form>
     </section>

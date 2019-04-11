@@ -1,7 +1,9 @@
 package com.example.demo.Controllers;
 
 
+import com.example.demo.Models.Diagnose;
 import com.example.demo.Models.Patient;
+import com.example.demo.Services.DiagnoseService;
 import com.example.demo.Services.PatientService;
 import com.example.demo.Services.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class LægeController {
     @Autowired
     PatientServiceImpl patientServiceimpl;
 
+    @Autowired
+    DiagnoseService diagnoseService;
+
     @GetMapping("/opretPatient")
     public String submitPatient(Model model){
         model.addAttribute("patient", new Patient());
@@ -32,7 +37,6 @@ public class LægeController {
     @PostMapping("/opretPatient")
     public String submitPatient (@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException {
         patientService.opretPatient(patient);
-
 
         return "opretPatient";
     }
@@ -47,9 +51,17 @@ public class LægeController {
         return "opretKonsultation";
     }
 
-
     @GetMapping("/tildelDiagnose")
-    public String tildelDiagnose() {
+    public String tildelDiagnose(Model model) {
+
+        model.addAttribute("diagnose", new Diagnose());
+        return "tildelDiagnose";
+    }
+
+    @PostMapping("/tildelDiagnose")
+    public String tildelDiagnose(@ModelAttribute Diagnose diagnose, Model model) throws SQLException, ClassNotFoundException {
+
+        diagnoseService.tildelDiagnose(diagnose);
         return "tildelDiagnose";
     }
 
