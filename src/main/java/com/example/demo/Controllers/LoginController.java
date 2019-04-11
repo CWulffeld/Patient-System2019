@@ -35,7 +35,7 @@ public class LoginController {
             if (bruger.getRolle().equalsIgnoreCase("Læge")){
                 System.out.println(patient.getCpr());
                 loggedIn = patientService.FindPatient(patient.getCpr());
-                System.out.println(loggedIn.toString());
+                System.out.println(loggedIn.toString() + "ok");
                 return "lægeHome";
             }
             else  if (bruger.getRolle().equalsIgnoreCase("Sekretær")){
