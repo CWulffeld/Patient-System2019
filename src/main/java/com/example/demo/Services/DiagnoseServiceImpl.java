@@ -1,0 +1,25 @@
+package com.example.demo.Services;
+
+import com.example.demo.Models.Bruger;
+import com.example.demo.Models.Diagnose;
+import com.example.demo.Repositories.DiagnoseRepositorySQL;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.sql.SQLException;
+
+public class DiagnoseServiceImpl implements DiagnoseService {
+
+    @Autowired
+    DiagnoseRepositorySQL diagnoseRepositorySQL;
+
+    @Override
+    public void opretDiagnose(Diagnose diagnose) throws SQLException, ClassNotFoundException {
+        diagnoseRepositorySQL.insertDiagnosetoDB(diagnose.getPatientFornavn(), diagnose.getPatientEfternavn(),
+                diagnose.getCpr(), diagnose.getDiagnose(), diagnose.getMedicin(), diagnose.getNote(), diagnose.getDato());
+    }
+
+    @Override
+    public void tjekLogin(Bruger bruger) throws SQLException, ClassNotFoundException {
+
+    }
+}
