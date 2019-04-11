@@ -17,8 +17,6 @@ public class PatientServiceImpl implements PatientService {
     PatientRepositorySQL patientRepositorySQL;
 
 
-    // private PatientRepository patientRepository;
-
 
     @Override
     public void opretPatient(Patient patient) throws SQLException, ClassNotFoundException {
@@ -33,7 +31,7 @@ public class PatientServiceImpl implements PatientService {
                 , patient.getKortBeskrivelse());
 
 
-        //patientRepository.save(patient);
+
     }
 
 
@@ -49,6 +47,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException {
         Patient fundetPatient = patientRepositorySQL.FindPatientData(cpr);
+
         return fundetPatient;
     }
 

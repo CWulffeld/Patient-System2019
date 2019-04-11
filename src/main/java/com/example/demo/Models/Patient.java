@@ -1,26 +1,33 @@
 package com.example.demo.Models;
 
+import com.example.demo.Services.PatientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
 public class Patient {
 
-    private List<Patient> patientList;
+    List<Patient> patientList;
 
-    private String forNavn= "ingenting";
-    private String efterNavn= "ingenting";
+    private String forNavn;
+    private String efterNavn;
     @Id
-    private int cpr=0;
+    private int cpr;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String fødselsdato = "ingenting";
-    private int højde = 0;
-    private int vægt= 0;
+    private String fødselsdato;
+    private int højde;
+    private int vægt;
     private int telefonNr = 0;
-    private String adresse ="ingenting";
-    private String kortBeskrivelse="ingenting";
+    private String adresse;
+    private String kortBeskrivelse;
+
+
+    @Autowired
+    PatientService patientService;
 
     public Patient(String forNavn, String efterNavn, int cpr, String fødselsdato, int telefonNr, String adresse, int højde, int vægt, String kortBeskrivelse){
 
@@ -56,6 +63,7 @@ public class Patient {
     }
 
     public int getCpr() {
+
         return cpr;
     }
 

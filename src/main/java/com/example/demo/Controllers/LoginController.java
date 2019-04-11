@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -31,8 +33,9 @@ public class LoginController {
         Patient loggedIn;
        // patientService.tjekLogin(patient.getCpr());
 
+        model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
 
-        model.addAttribute("cpr", patientService.FindPatient(patient.getCpr()));
+
 
 
         if(patientService.tjekLogin(patient.getCpr())){
@@ -47,6 +50,7 @@ public class LoginController {
                 return "sekretærHome";
             }
         }
+        model.addAttribute("error" , true);
         return "login";
 
         //return "lægeHome";

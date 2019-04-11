@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LægeController {
@@ -42,7 +44,6 @@ public class LægeController {
     @PostMapping("/opretPatient")
     public String submitPatient (@ModelAttribute Patient patient) throws SQLException, ClassNotFoundException {
         patientService.opretPatient(patient);
-
         return "opretPatient";
     }
 
@@ -86,6 +87,7 @@ public class LægeController {
     public String patientInformationer(Model model, Patient patient) throws SQLException, ClassNotFoundException {
 
         patientService.FindPatient(patient.getCpr());
+
         model.addAttribute("fornavn", patient.getForNavn());
         model.addAttribute("efternavn", patient.getEfterNavn());
         model.addAttribute("cpr", patient.getCpr());
