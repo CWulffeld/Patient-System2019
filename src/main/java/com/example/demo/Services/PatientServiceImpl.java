@@ -47,5 +47,11 @@ public class PatientServiceImpl implements PatientService {
         return fundetCpr;
     }
 
+    @Override
+    public Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException {
+        Patient fundetPatient = patientRepositorySQL.FindPatientData(cpr);
+        return fundetPatient;
+    }
+
 
 }

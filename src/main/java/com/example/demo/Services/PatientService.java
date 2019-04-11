@@ -12,4 +12,5 @@ public interface PatientService {
 
      boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException;
 
+     Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException;
 }

@@ -70,9 +70,10 @@ public class PatientRepositorySQL{
     }
 
     public Patient FindPatientData(int cpr) throws ClassNotFoundException, SQLException{
+        Statement stmt = DBConfig.getConnection().createStatement();
         String FindPatientData = "SELECT * FROM patient WHERE (Patient_cpr = '" + cpr + "');";
-        ResultSet rs = SQLExecuteQuery(FindPatientData);
         Patient patient = new Patient();
+        ResultSet rs = stmt.executeQuery(FindPatientData);
         while(rs.next()){
             String fornavn = rs.getString("Patient_fornavn");
             String efternavn = rs.getString("Patient_efternavn");
@@ -86,7 +87,7 @@ public class PatientRepositorySQL{
 
             patient = new Patient(fornavn, efternavn, Cpr, dato, telefonNr, adresse, højde, vægt,beskrivelse );
         }
-
+        stmt.close();
         return patient;
     }
 
