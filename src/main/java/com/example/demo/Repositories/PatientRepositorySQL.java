@@ -55,10 +55,39 @@ public class PatientRepositorySQL{
     }
 
     //SELECT DISTINCT. selecter patient cpr via argumentet.
-    public ResultSet selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
+    public boolean selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
+        Statement stmt = DBConfig.getConnection().createStatement();
         String sql_selectPatientCpr = "SELECT patient_cpr From patient WHERE patient_cpr = " + cpr;
-        ResultSet rs = SQLExecuteQuery(sql_selectPatientCpr);
-        return rs;
+        ResultSet rs = stmt.executeQuery(sql_selectPatientCpr);
+        boolean cprFundet = false;
+        while(rs.next()){
+            if(rs.getInt("Patient_cpr") == cpr){
+                cprFundet = true;
+            }
+        }
+        stmt.close();
+        return cprFundet;
+    }
+
+    public Patient FindPatientData(int cpr) throws ClassNotFoundException, SQLException{
+        String FindPatientData = "SELECT * FROM patient WHERE (Patient_cpr = '" + cpr + "');";
+        ResultSet rs = SQLExecuteQuery(FindPatientData);
+        Patient patient = new Patient();
+        while(rs.next()){
+            String fornavn = rs.getString("Patient_fornavn");
+            String efternavn = rs.getString("Patient_efternavn");
+            int Cpr = rs.getInt("Patient_cpr");
+            String dato = rs.getString("Patient_fødselsdato");
+            int telefonNr = rs.getInt("Patient_telefonnr");
+            String adresse = rs.getString("Patient_adresse");
+            int højde = rs.getInt("Patient_højde");
+            int vægt = rs.getInt("Patient_vægt");
+            String beskrivelse = rs.getString("Patient_beskrivelse");
+
+            patient = new Patient(fornavn, efternavn, Cpr, dato, telefonNr, adresse, højde, vægt,beskrivelse );
+        }
+
+        return patient;
     }
 
     //Sorter table via parametre
@@ -91,10 +120,6 @@ public class PatientRepositorySQL{
         SQLExecute(SortViaVægt);
     }
 
-    public void FindPatientData(int cpr) throws ClassNotFoundException, SQLException{
-        String FindPatientData = "SELECT * FROM tables WHERE (Patient_cpr = '" + cpr + "');";
-        SQLExecute(FindPatientData);
-    }
 
     //Bare fordi det skal genbruges. Kan være det burde stå så alt SQl kan nå den samme.
     private void SQLExecute(String SQL) throws ClassNotFoundException, SQLException{

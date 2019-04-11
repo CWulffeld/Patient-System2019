@@ -10,6 +10,6 @@ public interface PatientService {
 
      void opretPatient(Patient patient) throws SQLException, ClassNotFoundException;
 
-     void tjekLogin(int cpr) throws SQLException, ClassNotFoundException;
+     boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException;
 
 }
