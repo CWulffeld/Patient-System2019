@@ -40,7 +40,7 @@ PatientService patientService;
 //            model.addAttribute("fornavn", patient.getForNavn());
 //            model.addAttribute("efternavn", patient.getEfterNavn());
 //            model.addAttribute("cpr", patient.getCpr());
-        model.addAttribute("cpr", patientService.FindPatient(patient.getCpr()));
+        model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
         return "lægeHome";
     }
 
