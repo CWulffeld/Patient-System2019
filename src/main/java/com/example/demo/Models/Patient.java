@@ -4,6 +4,7 @@ import com.example.demo.Services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -62,10 +63,7 @@ public class Patient {
         this.efterNavn = efterNavn;
     }
 
-    public int getCpr() {
-
-        return cpr;
-    }
+    public int getCpr() { return cpr; }
 
     public void setCpr(int cpr){ this.cpr=cpr;}
 

@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public class PatientRepositorySQL{
@@ -91,10 +93,32 @@ public class PatientRepositorySQL{
         return patient;
     }
 
+    public List<Patient> findAllePatienter() throws ClassNotFoundException, SQLException{
+        Statement stmt = DBConfig.getConnection().createStatement();
+        String SortViaFornavn = "SELECT * FROM patient ORDER BY Patient_fornavn ASC";
+        List<Patient> patienter = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery(SortViaFornavn);
+        while(rs.next()){
+            String fornavn = rs.getString("Patient_fornavn");
+            String efternavn = rs.getString("Patient_efternavn");
+            int Cpr = rs.getInt("Patient_cpr");
+            String dato = rs.getString("Patient_fødselsdato");
+            int telefonNr = rs.getInt("Patient_telefonnr");
+            String adresse = rs.getString("Patient_adresse");
+            int højde = rs.getInt("Patient_højde");
+            int vægt = rs.getInt("Patient_vægt");
+            String beskrivelse = rs.getString("Patient_beskrivelse");
+
+            patienter.add(new Patient(fornavn, efternavn, Cpr, dato, telefonNr, adresse, højde, vægt, beskrivelse));
+        }
+        stmt.close();
+        return patienter;
+    }
+
     //Sorter table via parametre
     public void SorterViaFornavn() throws ClassNotFoundException, SQLException{
-        String SortViaEfternavn = "SELECT * FROM patient ORDER BY Patient_fornavn ASC|DESC";
-        SQLExecute(SortViaEfternavn);
+        String SortViaFornavn = "SELECT * FROM patient ORDER BY Patient_fornavn ASC|DESC";
+        SQLExecute(SortViaFornavn);
     }
 
     public void SorterViaEfternavn() throws ClassNotFoundException, SQLException{

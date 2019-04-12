@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-
+/*
     @Autowired
     PatientService patientService;
 
@@ -54,5 +54,5 @@ public class LoginController {
         return "login";
 
         //return "lægeHome";
-    }
+    }*/
 }

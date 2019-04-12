@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 
 
+import com.example.demo.Models.Bruger;
 import com.example.demo.Models.Diagnose;
 import com.example.demo.Models.Konsultation;
 import com.example.demo.Models.Patient;
@@ -11,17 +12,18 @@ import com.example.demo.Services.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class LægeController {
 
+    static Patient loggedIn;
     @Autowired
     PatientService patientService;
 
@@ -84,13 +86,14 @@ public class LægeController {
     }
 
     @GetMapping("/patientInformationer")
-    public String patientInformationer(Model model, Patient patient) throws SQLException, ClassNotFoundException {
+    public String patientInformationer(@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException {
+        System.out.println(patient.toString());
+        model.addAttribute("fornavn", loggedIn.getForNavn());
+        model.addAttribute("efternavn", loggedIn.getEfterNavn());
+        model.addAttribute("cpr", loggedIn.getCpr());
 
-        patientService.FindPatient(patient.getCpr());
-
-        model.addAttribute("fornavn", patient.getForNavn());
-        model.addAttribute("efternavn", patient.getEfterNavn());
-        model.addAttribute("cpr", patient.getCpr());
+        model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
+        System.out.println(patient.toString());
 
         return "patientinformationer";
     }
@@ -105,4 +108,40 @@ public class LægeController {
         return "sletPatient";
     }
 
+    @GetMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, Patient patient) throws SQLException, ClassNotFoundException {
+        model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
+        return "login";
+    }
+
+
+    //Virker ikke rigtigt endnu. Den tester for læge/sekretær, men ikke for cpr.Den ved dog godt den skal have en int som input.
+    @PostMapping("/login")
+    public String login(Patient patient, Model model, Bruger bruger) throws SQLException, ClassNotFoundException {
+        // patientService.tjekLogin(patient.getCpr());
+
+       // model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
+        nuværendePatient(patientService.FindPatient(patient.getCpr()));
+        if(patientService.tjekLogin(patient.getCpr())){
+            if (bruger.getRolle().equalsIgnoreCase("Læge")){
+                loggedIn = patientService.FindPatient(patient.getCpr());
+                return "lægeHome";
+            }
+            else  if (bruger.getRolle().equalsIgnoreCase("Sekretær")){
+                System.out.println(patient.getCpr());
+                return "sekretærHome";
+            }
+        }
+        model.addAttribute("error" , true);
+        return "login";
+
+        //return "lægeHome";
+    }
+
+    @ModelAttribute("patient")
+    public Patient nuværendePatient(Patient Cpr)throws SQLException, ClassNotFoundException{
+        Patient patient = Cpr;
+        return patient;
+    }
 }

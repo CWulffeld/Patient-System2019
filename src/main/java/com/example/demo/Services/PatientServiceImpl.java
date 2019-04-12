@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -51,7 +52,11 @@ public class PatientServiceImpl implements PatientService {
         return fundetPatient;
     }
 
-
+    @Override
+    public List<Patient> findAllePatienter() throws SQLException, ClassNotFoundException {
+        List<Patient> patiener = patientRepositorySQL.findAllePatienter();
+        return patiener;
+    }
 
 
 }

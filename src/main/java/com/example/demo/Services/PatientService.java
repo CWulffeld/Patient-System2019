@@ -4,6 +4,7 @@ import com.example.demo.Models.Patient;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 
 public interface PatientService {
@@ -13,5 +14,7 @@ public interface PatientService {
      boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException;
 
      Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException;
+
+     List<Patient> findAllePatienter() throws SQLException, ClassNotFoundException;
 
 }

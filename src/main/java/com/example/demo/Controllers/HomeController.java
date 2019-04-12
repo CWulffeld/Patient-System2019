@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -28,8 +29,9 @@ PatientService patientService;
     */
 
     @GetMapping("/")
-    public String home() {
-
+    public String home(Model model)throws SQLException, ClassNotFoundException {
+        List<Patient> patienter = patientService.findAllePatienter();
+        model.addAttribute("patienter", patienter);
         return "home";
     }
 
