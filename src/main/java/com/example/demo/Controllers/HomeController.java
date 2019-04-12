@@ -30,8 +30,8 @@ PatientService patientService;
 
     @GetMapping("/")
     public String home(Model model)throws SQLException, ClassNotFoundException {
-        List<Patient> patienter = patientService.findAllePatienter();
-        model.addAttribute("patienter", patienter);
+        //List<Patient> patienter = patientService.findAllePatienter();
+        //model.addAttribute("patienter", patienter);
         return "home";
     }
 

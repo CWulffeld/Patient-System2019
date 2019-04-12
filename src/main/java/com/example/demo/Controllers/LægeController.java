@@ -23,7 +23,6 @@ import java.util.List;
 @SessionAttributes("patient")
 public class LægeController {
 
-    //Patient loggedIn;
     @Autowired
     PatientService patientService;
 
@@ -85,7 +84,7 @@ public class LægeController {
     }
 
     @GetMapping("/patientInformationer")
-    public String patientInformationer(@ModelAttribute("patient") Patient patient, Model model) throws SQLException, ClassNotFoundException {
+    public String patientInformationer(@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException {
         //System.out.println(loggedIn.toString());
         model.addAttribute("fornavn", patient.getForNavn());
         model.addAttribute("efternavn", patient.getEfterNavn());
@@ -113,26 +112,17 @@ public class LægeController {
     //Virker ikke rigtigt endnu. Den tester for læge/sekretær, men ikke for cpr.Den ved dog godt den skal have en int som input.
     @PostMapping("/login")
     public String login(Patient patient, Model model, Bruger bruger) throws SQLException, ClassNotFoundException {
-
-        if(patientService.tjekLogin(patient.getCpr())){
+        Patient login = patientService.FindPatient(patient.getCpr());
+        if(login.getCpr() != 0){
             if (bruger.getRolle().equalsIgnoreCase("Læge")){
-                System.out.println(patient.getCpr());
-                model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
-
+                model.addAttribute("patient", login);
                 return "lægeHome";
             }
             else  if (bruger.getRolle().equalsIgnoreCase("Sekretær")){
-                System.out.println(patient.getCpr());
                 return "sekretærHome";
             }
         }
         model.addAttribute("error" , true);
         return "login";
-    }
-
-    @ModelAttribute("patient")
-    public Patient nuværendePatient(Patient Cpr)throws SQLException, ClassNotFoundException{
-        Patient patient = Cpr;
-        return patient;
     }
 }
