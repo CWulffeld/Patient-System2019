@@ -13,10 +13,11 @@ public interface PatientService {
 
      /*boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException;*/
 
-     Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException;
+     Patient findPatient(int cpr) throws SQLException, ClassNotFoundException;
 
      List<Patient> findAllePatienter() throws SQLException, ClassNotFoundException;
 
-     void SletPatient(int cpr) throws SQLException, ClassNotFoundException;
+     void sletPatient(int cpr) throws SQLException, ClassNotFoundException;
 
+     void opdaterPatient(Patient patient) throws SQLException, ClassNotFoundException;
 }

@@ -120,6 +120,21 @@ public class PatientRepositorySQL{
         SQLExecute(sletPatientViaCpr);
     }
 
+    public void opdaterPatient(Patient patient) throws SQLException, ClassNotFoundException{
+        String opdaterPatientViaCpr = "UPDATE patient " +
+                "SET Patient_fornavn = '" + patient.getForNavn() +
+                "', Patient_efternavn = '" + patient.getEfterNavn() +
+                "', Patient_fødselsdato = '" + patient.getFødselsdato() +
+                "', Patient_telefonnr = '" + patient.getTelefonNr() +
+                "', Patient_adresse = '" + patient.getAdresse() +
+                "', Patient_højde = '" + patient.getHøjde() +
+                "', Patient_vægt = '" + patient.getVægt() +
+                "', Patient_beskrivelse = '" + patient.getKortBeskrivelse() +
+                "' WHERE (Patient_cpr = '" + patient.getCpr() +"');";
+
+        SQLExecute(opdaterPatientViaCpr);
+    }
+
     //Sorter table via parametre
     public void SorterViaFornavn() throws ClassNotFoundException, SQLException{
         String SortViaFornavn = "SELECT * FROM patient ORDER BY Patient_fornavn ASC|DESC";
@@ -163,11 +178,5 @@ public class PatientRepositorySQL{
         ResultSet rs = stmt.executeQuery(SQL);
         stmt.close();
         return rs;
-    }
-
-    private void SQLExecuteUpdate(String SQL) throws ClassNotFoundException, SQLException{
-        Statement stmt = DBConfig.getConnection().createStatement();
-        stmt.executeUpdate(SQL);
-        stmt.close();
     }
 }

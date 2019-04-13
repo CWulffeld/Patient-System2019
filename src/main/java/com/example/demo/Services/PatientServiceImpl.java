@@ -43,7 +43,7 @@ public class PatientServiceImpl implements PatientService {
     }*/
 
     @Override
-    public Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException {
+    public Patient findPatient(int cpr) throws SQLException, ClassNotFoundException {
         Patient fundetPatient = patientRepositorySQL.FindPatientData(cpr);
 
         return fundetPatient;
@@ -56,8 +56,13 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public void SletPatient(int cpr) throws SQLException, ClassNotFoundException {
+    public void sletPatient(int cpr) throws SQLException, ClassNotFoundException {
         patientRepositorySQL.sletPatient(cpr);
+    }
+
+    @Override
+    public void opdaterPatient(Patient patient) throws SQLException, ClassNotFoundException {
+        patientRepositorySQL.opdaterPatient(patient);
     }
 
 

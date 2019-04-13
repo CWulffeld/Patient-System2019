@@ -106,6 +106,12 @@ public class LægeController {
         return "opdaterPatient";
     }
 
+    @PostMapping("/opdaterPatient")
+    public String opdaterPatient(@ModelAttribute Patient patient) throws SQLException, ClassNotFoundException {
+        patientService.opdaterPatient(patient);
+        return "lægeHome";
+    }
+
     @GetMapping("/sletPatient")
     public String sletPatient(){
         return "sletPatient";
@@ -113,8 +119,7 @@ public class LægeController {
 
     @PostMapping("/sletPatient")
     public String sletPatient(@ModelAttribute Patient patient)throws SQLException, ClassNotFoundException{
-
-        patientService.SletPatient(patient.getCpr());
+        patientService.sletPatient(patient.getCpr());
         return "lægeStartsside";
     }
 
@@ -125,7 +130,7 @@ public class LægeController {
 
     @PostMapping("/login")
     public String login(Patient patient, Model model, Bruger bruger) throws SQLException, ClassNotFoundException {
-        Patient login = patientService.FindPatient(patient.getCpr());
+        Patient login = patientService.findPatient(patient.getCpr());
         if(login.getCpr() != 0){
             if (bruger.getRolle().equalsIgnoreCase("Læge")){
                 model.addAttribute("patient", login);

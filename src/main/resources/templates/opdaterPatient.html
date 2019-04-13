@@ -1,38 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>Opdater Patient</title>
+    <title>Opret Patient</title>
+
 <style>
-    #opdater_patient input {
-    margin-top: 10px;
+    #input_patient textarea{
+        margin-top: 10px;
+        width: 300px;
+        height: 200px;
     }
 
+    #input_patient input{
+        padding-left: 30px;
+        margin-top: 10px;
+    }
+
+    #input_patient label{
+        margin-top: 10px;
+        width: 150px;
+        float: left;
+    }
 </style>
 </head>
 <body>
+
 <header>
     <div th:insert="fragments/header :: header"></div>
 </header>
 
 <div th:insert="fragments/sidebarLæge :: sidebarLæge"></div>
+
+
 <div id="wrapper">
-    <h1> Opdater patient</h1>
+    <h1>Opdater patient</h1>
+
+
     <section>
 
-        <form action="/??" method="post" id="opdater_patient">
+        <form method="post" th:action="@{/opdaterPatient}" id="input_patient">
 
-            <label> Information 1:</label>
-            <input type="text" name="information 1" placeholder="information 1 ">
+            <label> Fornavn: </label>
+            <input type="text" name="Fornavn" placeholder="Fornavn" id="forNavn" th:field="${patient.forNavn}">
             <br>
-            <label> Information 2:</label>
-            <input type="text" name="information 2" placeholder="information 2 ">
+
+            <label> Efternavn: </label>
+            <input type="text" name="Efternavn" placeholder="Efternavn" id="efterNavn" th:field="${patient.efterNavn}">
             <br>
-            <input type="submit" value="Opdater patient">
+
+            <label> Fødselsdato: </label>
+            <input type="date" name="Fødselsdato" placeholder="Fødselsdato" id="fødselsdato" th:field="${patient.fødselsdato}">
+            <br>
+
+            <label> Telefon nr: </label>
+            <input type="number" name="Telefon nummer" placeholder="Telefon nummer" id="telefonNr" th:field="${patient.telefonNr}">
+            <br>
+
+            <label> Adresse: </label>
+            <input type="text" name="Adresse" placeholder="Adresse" id="adresse" th:field="${patient.adresse}">
+            <br>
+
+            <label> Højde: </label>
+            <input type="number" name="Højde" placeholder="Højde" id="højde" th:field="${patient.højde}">
+            <br>
+
+            <label> Vægt: </label>
+            <input type="number" name="Vægt" placeholder="Vægt" id="vægt" th:field="${patient.vægt}">
+            <br>
+
+            <label> Kort beskrivelse af patient: </label>
+            <textarea name="Kort beskrivelse" placeholder="Kort beskrivelse af patienten ..." id="kortBeskrivelse" th:field ="${patient.kortBeskrivelse}"></textarea>
+            <br>
+
+            <input type="submit" value="Opdater patient" >
+
         </form>
     </section>
-
 </div>
+
 
 </body>
 </html>
