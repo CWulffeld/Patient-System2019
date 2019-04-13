@@ -57,7 +57,7 @@ public class PatientRepositorySQL{
     }
 
     //SELECT DISTINCT. selecter patient cpr via argumentet.
-    public boolean selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
+    /*public boolean selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
         Statement stmt = DBConfig.getConnection().createStatement();
         String sql_selectPatientCpr = "SELECT patient_cpr From patient WHERE patient_cpr = " + cpr;
         ResultSet rs = stmt.executeQuery(sql_selectPatientCpr);
@@ -69,7 +69,7 @@ public class PatientRepositorySQL{
         }
         stmt.close();
         return cprFundet;
-    }
+    }*/
 
     public Patient FindPatientData(int cpr) throws ClassNotFoundException, SQLException{
         Statement stmt = DBConfig.getConnection().createStatement();

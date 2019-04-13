@@ -30,20 +30,17 @@ public class PatientServiceImpl implements PatientService {
                 , patient.getHøjde()
                 , patient.getVægt()
                 , patient.getKortBeskrivelse());
-
-
-
     }
 
 
     //Mangler kode til at tjekke om cpr nummeret i databasen er det samme som fra GUI
-    @Override
+    /*@Override
     public boolean tjekLogin(int cpr) throws SQLException, ClassNotFoundException {
         Patient patient = new Patient();
         patient.setCpr(cpr);
         boolean fundetCpr = patientRepositorySQL.selectPatientCpr(cpr);
         return fundetCpr;
-    }
+    }*/
 
     @Override
     public Patient FindPatient(int cpr) throws SQLException, ClassNotFoundException {

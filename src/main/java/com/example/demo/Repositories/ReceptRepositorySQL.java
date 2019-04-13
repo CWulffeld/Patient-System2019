@@ -16,7 +16,9 @@ public class ReceptRepositorySQL {
                 "Recept_note varchar(200),"+
                 "Medicin_navn varchar(100) NOT NULL," +
                 "Recept_udstedt DATE NOT NULL," +
-                "PRIMARY KEY()" +
+                "FOREIGN KEY(Patient_cpr)" +
+                "REFERENCES patient(Patient_cpr)" +
+                "ON UPDATE CASCADE ON DELETE CASCADE" +
                 ")";
 
         SQLExecute(sql_createReceptTable);

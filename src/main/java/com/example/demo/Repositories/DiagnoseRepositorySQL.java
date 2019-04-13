@@ -20,7 +20,9 @@ public class DiagnoseRepositorySQL {
                 "Medicin_navn varchar(100) NOT NULL, " +
                 "Diagnose_note varchar(100)," +
                 "Diagnose_udstedt DATE NOT NULL," +
-                "PRIMARY KEY()" +
+                "FOREIGN KEY(Patient_cpr)" +
+                "REFERENCES patient(Patient_cpr)" +
+                "ON UPDATE CASCADE ON DELETE CASCADE" +
                 ")";
 
                 /* Den der stod her før hvis den skal bruges.
