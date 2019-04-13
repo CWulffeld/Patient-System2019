@@ -13,7 +13,15 @@
 
 <div id="wrapper">
 
-    <h1> Slet patient</h1>
+    <h1> Er du sikker på du vil slette patienten?</h1>
+
+    <Form th:action="@{/sletPatient}" method="post">
+        <input type="submit" value="Ja" onclick="window.location.href='/sletPatient'" />
+        <input type="button" value="Nej" onclick="window.location.href='/lægeHome'" />
+    </Form>
+
+
+
 
 
 </div>

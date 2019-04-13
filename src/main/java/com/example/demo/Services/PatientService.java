@@ -17,4 +17,6 @@ public interface PatientService {
 
      List<Patient> findAllePatienter() throws SQLException, ClassNotFoundException;
 
+     void SletPatient(int cpr) throws SQLException, ClassNotFoundException;
+
 }

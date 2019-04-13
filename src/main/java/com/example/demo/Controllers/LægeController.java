@@ -35,6 +35,15 @@ public class LægeController {
     @Autowired
     KonsultationService konsultationService;
 
+    @GetMapping("/lægeHome")
+    public String lægeHome(){
+//            model.addAttribute("fornavn", patient.getForNavn());
+//            model.addAttribute("efternavn", patient.getEfterNavn());
+//            model.addAttribute("cpr", patient.getCpr());
+        //model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
+        return "lægeHome";
+    }
+
     @GetMapping("/opretPatient")
     public String submitPatient(Model model){
         model.addAttribute("patient", new Patient());
@@ -45,7 +54,7 @@ public class LægeController {
     @PostMapping("/opretPatient")
     public String submitPatient (@ModelAttribute Patient patient) throws SQLException, ClassNotFoundException {
         patientService.opretPatient(patient);
-        return "opretPatient";
+        return "lægeHome";
     }
 
     @GetMapping("/opretReceptLæge")
@@ -71,20 +80,18 @@ public class LægeController {
 
     @GetMapping("/tildelDiagnose")
     public String tildelDiagnose(Model model) {
-
         model.addAttribute("diagnose", new Diagnose());
         return "tildelDiagnose";
     }
 
     @PostMapping("/tildelDiagnose")
     public String tildelDiagnose(@ModelAttribute Diagnose diagnose, Model model) throws SQLException, ClassNotFoundException {
-
         diagnoseService.opretDiagnose(diagnose);
         return "tildelDiagnose";
     }
 
     @GetMapping("/patientInformationer")
-    public String patientInformationer(@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException {
+    public String patientInformationer(@ModelAttribute Patient patient, Model model){
         //System.out.println(loggedIn.toString());
         model.addAttribute("fornavn", patient.getForNavn());
         model.addAttribute("efternavn", patient.getEfterNavn());
@@ -104,12 +111,18 @@ public class LægeController {
         return "sletPatient";
     }
 
+    @PostMapping("/sletPatient")
+    public String sletPatient(@ModelAttribute Patient patient)throws SQLException, ClassNotFoundException{
+
+        patientService.SletPatient(patient.getCpr());
+        return "lægeStartsside";
+    }
+
     @GetMapping("/login")
-    public String login(Model model, Patient patient) throws SQLException, ClassNotFoundException {
+    public String login(){
         return "login";
     }
 
-    //Virker ikke rigtigt endnu. Den tester for læge/sekretær, men ikke for cpr.Den ved dog godt den skal have en int som input.
     @PostMapping("/login")
     public String login(Patient patient, Model model, Bruger bruger) throws SQLException, ClassNotFoundException {
         Patient login = patientService.FindPatient(patient.getCpr());

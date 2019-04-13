@@ -55,5 +55,10 @@ public class PatientServiceImpl implements PatientService {
         return patiener;
     }
 
+    @Override
+    public void SletPatient(int cpr) throws SQLException, ClassNotFoundException {
+        patientRepositorySQL.sletPatient(cpr);
+    }
+
 
 }

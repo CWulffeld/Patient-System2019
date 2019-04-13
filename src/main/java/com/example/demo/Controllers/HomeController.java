@@ -35,16 +35,6 @@ PatientService patientService;
         return "home";
     }
 
-    @GetMapping("/lægeHome")
-    public String lægeHome(Model model, Patient patient) throws SQLException, ClassNotFoundException {
-//            model.addAttribute("fornavn", patient.getForNavn());
-//            model.addAttribute("efternavn", patient.getEfterNavn());
-//            model.addAttribute("cpr", patient.getCpr());
-        model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
-        return "lægeHome";
-    }
-
-
     @GetMapping("/sekretærHome")
     public String sekretærHome() {
         return "sekretærHome";

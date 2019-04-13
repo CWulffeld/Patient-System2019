@@ -115,6 +115,11 @@ public class PatientRepositorySQL{
         return patienter;
     }
 
+    public void sletPatient(int cpr)throws SQLException, ClassNotFoundException{
+        String sletPatientViaCpr = "DELETE FROM patient WHERE (Patient_cpr = '" + cpr + "');";
+        SQLExecute(sletPatientViaCpr);
+    }
+
     //Sorter table via parametre
     public void SorterViaFornavn() throws ClassNotFoundException, SQLException{
         String SortViaFornavn = "SELECT * FROM patient ORDER BY Patient_fornavn ASC|DESC";

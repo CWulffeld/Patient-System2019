@@ -65,7 +65,12 @@ public class Patient {
 
     public int getCpr() { return cpr; }
 
-    public void setCpr(int cpr){ this.cpr=cpr;}
+    public void setCpr(int cpr){
+        if(cpr >= 1000 && cpr < 10000)
+        {
+            this.cpr=cpr;
+        }
+    }
 
     public String getFødselsdato() {
         return fødselsdato;
