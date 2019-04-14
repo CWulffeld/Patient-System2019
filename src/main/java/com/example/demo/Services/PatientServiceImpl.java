@@ -1,13 +1,10 @@
 package com.example.demo.Services;
 
-import com.example.demo.Models.Bruger;
 import com.example.demo.Models.Patient;
-import com.example.demo.Repositories.PatientRepository;
 import com.example.demo.Repositories.PatientRepositorySQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 

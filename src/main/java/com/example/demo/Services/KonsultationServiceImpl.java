@@ -16,11 +16,9 @@ public class KonsultationServiceImpl implements KonsultationService {
 
     @Override
     public void opretKonsultation(Konsultation konsultation) throws SQLException, ClassNotFoundException {
-                konsultationRepositorySQL.insertKonsultationToDB(
-                konsultation.getBeskrivelse(),
-                konsultation.getKonklusion(),
-                konsultation.getDato());
-
+                konsultationRepositorySQL.insertKonsultationToDB(konsultation.getPatientNavn(),
+                        konsultation.getCpr(), konsultation.getBeskrivelse(),
+                        konsultation.getKonklusion(), konsultation.getDato());
     }
 
 

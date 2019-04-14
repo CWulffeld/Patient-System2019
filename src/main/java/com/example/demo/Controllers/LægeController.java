@@ -57,20 +57,21 @@ public class LægeController {
         recept.setCpr(patient.getCpr());
         recept.setPatientNavn(patient.getForNavn(), patient.getEfterNavn());
         receptService.opretRecept(recept);
-        return "opretReceptLæge";
+        return "lægeHome";
     }
 
     @GetMapping("/opretKonsultation")
-    public String opretKonsultation() {
-        //model.addAttribute("konsultation", new Konsultation());
+    public String opretKonsultation(Model model) {
+        model.addAttribute("konsultation", new Konsultation());
         return "opretKonsultation";
     }
 
     @PostMapping("/opretKonsultation")
     public String opretKonsultation(Konsultation konsultation, Patient patient) throws SQLException, ClassNotFoundException {
         konsultation.setCpr(patient.getCpr());
+        konsultation.setPatientNavn(patient.getForNavn(), patient.getEfterNavn());
         konsultationService.opretKonsultation(konsultation);
-        return "opretKonsultation";
+        return "lægeHome";
     }
 
 
@@ -85,7 +86,7 @@ public class LægeController {
         diagnose.setPatientNavn(patient.getForNavn(), patient.getEfterNavn());
         diagnose.setCpr(patient.getCpr());
         diagnoseService.opretDiagnose(diagnose);
-        return "tildelDiagnose";
+        return "lægeHome";
     }
 
     @GetMapping("/patientInformationer")
