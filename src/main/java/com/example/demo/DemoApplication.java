@@ -19,7 +19,10 @@ public class DemoApplication {
         patientRepositorySQL.createPatientTable();
         ReceptRepositorySQL receptRepositorySQL = new ReceptRepositorySQL();
         receptRepositorySQL.createReceptTable();
+        DiagnoseRepositorySQL diagnoseRepositorySQL = new DiagnoseRepositorySQL();
+        diagnoseRepositorySQL.createDiagnoseTable();
         SpringApplication.run(DemoApplication.class, args);
+
 
 //
 //        DiagnoseRepositorySQL diagnoseRepositorySQL = new DiagnoseRepositorySQL();

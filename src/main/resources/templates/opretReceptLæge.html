@@ -27,13 +27,13 @@
 
 
             <label> Kort Note:</label>
-            <textarea type="text" name="note" placeholder="Kort note"></textarea>
+            <textarea type="text" name="note" placeholder="Kort note" th:field="${recept.note}"></textarea>
             <br>
             <label> Medicin:</label>
-            <input type="text" name="medicin" placeholder="Medicin">
+            <input type="text" name="medicin" placeholder="Medicin" id="medicin" th:field="${recept.medicin}">
             <br>
             <label> Dato:</label>
-            <input type="date" name="dato" placeholder="dato ">
+            <input type="date" name="dato" placeholder="dato" th:field="${recept.dato}">
             <br>
 
             <input type="submit" value="Opret recept">

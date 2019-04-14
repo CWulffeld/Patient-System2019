@@ -41,10 +41,10 @@ public class DiagnoseRepositorySQL {
                 "Diagnose, "+
                 "Medicin_navn, " +
                 "Diagnose_note, " +
-                "Diagnose_udstedt, " +
+                "Diagnose_udstedt) " +
                 "VALUES " +
                 "('" + navn +  "', " + cpr + ", '" + diagnose +
-                "', '" + note + "'. '" + medicin + "', '" + udstedt +
+                "', '" + medicin + "', '" + note + "', '" + udstedt +
                 "')";
         SQLExecute(sql_insertDiagnose);
     }

@@ -30,10 +30,6 @@ public class LægeController {
 
     @GetMapping("/lægeHome")
     public String lægeHome(){
-//            model.addAttribute("fornavn", patient.getForNavn());
-//            model.addAttribute("efternavn", patient.getEfterNavn());
-//            model.addAttribute("cpr", patient.getCpr());
-        //model.addAttribute("patient", patientService.FindPatient(patient.getCpr()));
         return "lægeHome";
     }
 
@@ -51,32 +47,29 @@ public class LægeController {
     }
 
     @GetMapping("/opretReceptLæge")
-    public String opretRecept() {
+    public String opretRecept(Model model) {
+        model.addAttribute("recept", new Recept());
         return "opretReceptLæge";
     }
 
     @PostMapping("/opretReceptLæge")
     public String opretRecept(Recept recept, Patient patient) throws SQLException, ClassNotFoundException{
-        System.out.println(patient.getCpr());
         recept.setCpr(patient.getCpr());
-        System.out.println(recept.getCpr());
         recept.setPatientNavn(patient.getForNavn(), patient.getEfterNavn());
         receptService.opretRecept(recept);
         return "opretReceptLæge";
     }
 
     @GetMapping("/opretKonsultation")
-    public String opretKonsultation(Model model) {
-        model.addAttribute("konsultation", new Konsultation());
-
+    public String opretKonsultation() {
+        //model.addAttribute("konsultation", new Konsultation());
         return "opretKonsultation";
     }
 
     @PostMapping("/opretKonsultation")
-    public String opretKonsultation(@ModelAttribute Konsultation konsultation, Model model) throws SQLException, ClassNotFoundException {
-        System.out.println("step 1");
+    public String opretKonsultation(Konsultation konsultation, Patient patient) throws SQLException, ClassNotFoundException {
+        konsultation.setCpr(patient.getCpr());
         konsultationService.opretKonsultation(konsultation);
-        System.out.println("step 2");
         return "opretKonsultation";
     }
 
@@ -88,19 +81,18 @@ public class LægeController {
     }
 
     @PostMapping("/tildelDiagnose")
-    public String tildelDiagnose(@ModelAttribute Diagnose diagnose, Model model) throws SQLException, ClassNotFoundException {
+    public String tildelDiagnose(Diagnose diagnose, Patient patient) throws SQLException, ClassNotFoundException {
+        diagnose.setPatientNavn(patient.getForNavn(), patient.getEfterNavn());
+        diagnose.setCpr(patient.getCpr());
         diagnoseService.opretDiagnose(diagnose);
         return "tildelDiagnose";
     }
 
     @GetMapping("/patientInformationer")
     public String patientInformationer(@ModelAttribute Patient patient, Model model){
-        //System.out.println(loggedIn.toString());
         model.addAttribute("fornavn", patient.getForNavn());
         model.addAttribute("efternavn", patient.getEfterNavn());
         model.addAttribute("cpr", patient.getCpr());
-        System.out.println(patient.toString());
-
         return "patientinformationer";
     }
 
