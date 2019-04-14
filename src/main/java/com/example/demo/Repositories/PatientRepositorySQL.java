@@ -2,39 +2,33 @@ package com.example.demo.Repositories;
 
 import com.example.demo.Configs.DBConfig;
 import com.example.demo.Models.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Repository
 public class PatientRepositorySQL{
 
-//    @Autowired
-//    DBConfig DB;
     //Måske have en composite primary key her af fødselsdato og cpr, da det ellers muligvis kommer til at have duplicates?
     public void createPatientTable() throws ClassNotFoundException, SQLException {
-            String sql_createPatientTable = "CREATE TABLE IF NOT EXISTS patient" +
-                "(Patient_forNavn varchar (100)," +
-                "Patient_efterNavn varchar(100)," +
-                "Patient_cpr int(4)," +
-                "Patient_fødselsdato DATE, " +
-                "Patient_telefonnr int (8)," +
-                "Patient_adresse varchar (100),"+
-                "Patient_højde int (4)," +
-                "Patient_vægt int (4)," +
-                "Patient_beskrivelse varchar (250)" +
-                ")";
+            String sql_createPatientTable = "CREATE TABLE IF NOT EXISTS "+ DBConfig.getUser() +".patient " +
+                "(Patient_fornavn varchar(50), " +
+                "Patient_efternavn varchar(50), " +
+                "Patient_cpr int(4) NOT NULL, " +
+                "Patient_fødselsdato varchar(10), " +
+                "Patient_telefonnr int(8), " +
+                "Patient_adresse varchar(100), "+
+                "Patient_højde int(4), " +
+                "Patient_vægt int(4), " +
+                "Patient_beskrivelse varchar(250), " +
+                "PRIMARY KEY(Patient_cpr))";
         SQLExecute(sql_createPatientTable);
     }
-    //Har problem med duplicate key til Primary - Gætter cpr? Samt at tallet ikke behøves at være 4 cifre, default er 0.
+    //Er ikke så glad for duplicate primary key - CPR
     public void insertPatienttoDB(String fornavn, String efternavn, int cpr, String fødselsdato, int telefonnr, String adresse, int højde, int vægt, String beskrivelse)
             throws SQLException, ClassNotFoundException {
         String sql_insertPatient = "INSERT INTO patient" +

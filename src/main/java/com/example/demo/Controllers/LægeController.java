@@ -1,14 +1,8 @@
 package com.example.demo.Controllers;
 
 
-import com.example.demo.Models.Bruger;
-import com.example.demo.Models.Diagnose;
-import com.example.demo.Models.Konsultation;
-import com.example.demo.Models.Patient;
-import com.example.demo.Services.DiagnoseService;
-import com.example.demo.Services.KonsultationService;
-import com.example.demo.Services.PatientService;
-import com.example.demo.Services.PatientServiceImpl;
+import com.example.demo.Models.*;
+import com.example.demo.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,13 +21,12 @@ public class LægeController {
     PatientService patientService;
 
     @Autowired
-    PatientServiceImpl patientServiceimpl;
-
-    @Autowired
     DiagnoseService diagnoseService;
 
     @Autowired
     KonsultationService konsultationService;
+
+    ReceptServiceImpl receptService = new ReceptServiceImpl();
 
     @GetMapping("/lægeHome")
     public String lægeHome(){
@@ -59,6 +52,16 @@ public class LægeController {
 
     @GetMapping("/opretReceptLæge")
     public String opretRecept() {
+        return "opretReceptLæge";
+    }
+
+    @PostMapping("/opretReceptLæge")
+    public String opretRecept(Recept recept, Patient patient) throws SQLException, ClassNotFoundException{
+        System.out.println(patient.getCpr());
+        recept.setCpr(patient.getCpr());
+        System.out.println(recept.getCpr());
+        recept.setPatientNavn(patient.getForNavn(), patient.getEfterNavn());
+        receptService.opretRecept(recept);
         return "opretReceptLæge";
     }
 

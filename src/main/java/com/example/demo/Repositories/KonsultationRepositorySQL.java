@@ -9,7 +9,7 @@ import java.sql.Statement;
 @Repository
 public class KonsultationRepositorySQL {
     public void createKonsultationTable() throws ClassNotFoundException, SQLException {
-        String sql_createKonsultationTable = "CREATE TABLE IF NOT EXISTS konsultation" +
+        String sql_createKonsultationTable = "CREATE TABLE IF NOT EXISTS " + DBConfig.getUser() + ".konsultation" +
                 "(Konsultation_ID int, "+
                 "Konsultation_beskrivelse varchar (300)," +
                 "Konsultation_konklusion varchar(300)," +

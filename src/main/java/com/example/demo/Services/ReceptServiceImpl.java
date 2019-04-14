@@ -8,12 +8,12 @@ import java.sql.SQLException;
 
 public class ReceptServiceImpl implements ReceptService {
 
-    @Autowired
-    ReceptRepositorySQL receptRepositorySQL;
+    ReceptRepositorySQL receptRepositorySQL = new ReceptRepositorySQL();
 
     @Override
-    public void opretRecept(Recept recept) throws SQLException, ClassNotFoundException {
-        receptRepositorySQL.insertRecepttoDB(recept.getPatientFornavn(), recept.getPatientEfternavn(),
+    public void opretRecept(Recept recept) throws SQLException, ClassNotFoundException, NullPointerException {
+        System.out.println(recept.toString() + " " + recept.getCpr());
+        receptRepositorySQL.insertRecepttoDB(recept.getPatientNavn(),
                 recept.getCpr(), recept.getNote(), recept.getMedicin(), recept.getDato());
     }
 }

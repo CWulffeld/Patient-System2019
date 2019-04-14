@@ -12,14 +12,13 @@ public class DiagnoseRepositorySQL {
 
 
     public void createDiagnoseTable() throws ClassNotFoundException, SQLException {
-        String sql_createDiagnoseTable = "CREATE TABLE IF NOT EXISTS diagnose" +
-                "Patient_fornavn varchar(100) NOT NULL," +
-                "Patient_efternavn varchar(100) NOT NULL," +
+        String sql_createDiagnoseTable = "CREATE TABLE IF NOT EXISTS " +DBConfig.getUser() + ".diagnose" +
+                "(Patient_navn varchar(100) NOT NULL," +
                 "Patient_cpr int(4) NOT NULL,"  +
                 "Diagnose varchar(100) NOT NULL, " +
                 "Medicin_navn varchar(100) NOT NULL, " +
                 "Diagnose_note varchar(100)," +
-                "Diagnose_udstedt DATE NOT NULL," +
+                "Diagnose_udstedt varchar(10) NOT NULL," +
                 "FOREIGN KEY(Patient_cpr)" +
                 "REFERENCES patient(Patient_cpr)" +
                 "ON UPDATE CASCADE ON DELETE CASCADE" +
@@ -35,20 +34,17 @@ public class DiagnoseRepositorySQL {
         SQLExecute(sql_createDiagnoseTable);
     }
 
-    public void insertDiagnosetoDB(String fornavn, String efternavn, int cpr, String diagnose, String medicin, String note, String udstedt) throws SQLException, ClassNotFoundException {
+    public void insertDiagnosetoDB(String navn, int cpr, String diagnose, String medicin, String note, String udstedt) throws SQLException, ClassNotFoundException {
         String sql_insertDiagnose = "INSERT INTO diagnose" +
-                "(Patient_fornavn, " +
-                "Patient_efterNavn, " +
+                "(Patient_navn, " +
                 "Patient_cpr, " +
                 "Diagnose, "+
                 "Medicin_navn, " +
                 "Diagnose_note, " +
                 "Diagnose_udstedt, " +
                 "VALUES " +
-                "('" + fornavn + "', '" + efternavn +
-                "', " + cpr + ", '" + diagnose +
-                "', '" + note + "'. '" + medicin+
-                "', '" + udstedt +
+                "('" + navn +  "', " + cpr + ", '" + diagnose +
+                "', '" + note + "'. '" + medicin + "', '" + udstedt +
                 "')";
         SQLExecute(sql_insertDiagnose);
     }

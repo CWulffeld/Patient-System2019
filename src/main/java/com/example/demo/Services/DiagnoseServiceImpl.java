@@ -16,12 +16,9 @@ public class DiagnoseServiceImpl implements DiagnoseService {
 
     @Override
     public void opretDiagnose(Diagnose diagnose) throws SQLException, ClassNotFoundException {
-        diagnoseRepositorySQL.insertDiagnosetoDB(diagnose.getPatientFornavn(), diagnose.getPatientEfternavn(),
-                diagnose.getCpr(), diagnose.getDiagnose(), diagnose.getMedicin(), diagnose.getNote(), diagnose.getDato());
+        diagnoseRepositorySQL.insertDiagnosetoDB(diagnose.getPatientNavn(),
+                diagnose.getCpr(), diagnose.getDiagnose(), diagnose.getMedicin(),
+                diagnose.getNote(), diagnose.getDato());
     }
 
-    @Override
-    public void tjekLogin(Bruger bruger) throws SQLException, ClassNotFoundException {
-
-    }
 }
