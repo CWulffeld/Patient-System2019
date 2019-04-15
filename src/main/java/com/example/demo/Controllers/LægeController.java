@@ -9,10 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
-import java.util.List;
 
+// Valgte at bruge session attribute da jeg var usikker hvad den korrekte måde at fastholde en værdi var.
 @Controller
 @SessionAttributes("patient")
 public class LægeController {
@@ -26,7 +24,7 @@ public class LægeController {
     @Autowired
     KonsultationService konsultationService;
 
-    ReceptServiceImpl receptService = new ReceptServiceImpl();
+    ReceptService receptService = new ReceptServiceImpl();
 
     @GetMapping("/lægeHome")
     public String lægeHome(){
@@ -90,10 +88,12 @@ public class LægeController {
     }
 
     @GetMapping("/patientInformationer")
-    public String patientInformationer(@ModelAttribute Patient patient, Model model){
-        model.addAttribute("fornavn", patient.getForNavn());
-        model.addAttribute("efternavn", patient.getEfterNavn());
-        model.addAttribute("cpr", patient.getCpr());
+    public String patientInformationer(@ModelAttribute Patient patient, Model model) throws SQLException, ClassNotFoundException{
+        //Burde være et one to many tabel her.
+        model.addAttribute("konsultationer", konsultationService.findKonsultationerViaCpr(patient.getCpr()));
+        model.addAttribute("diagnoser", diagnoseService.findDiagnoserViaCpr(patient.getCpr()));
+        model.addAttribute("recepter", receptService.findRecepterViaCpr(patient.getCpr()));
+
         return "patientinformationer";
     }
 

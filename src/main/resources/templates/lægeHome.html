@@ -17,7 +17,33 @@
    <h1>Læge home</h1>
 
     <div>
-         <h2 th:text="${patient}"></h2>
+        <h2>Patient</h2>
+        <label>Navn: </label>
+        <td th:text="${patient.forNavn}">fornavn</td>
+        <td th:text="${patient.efterNavn}">efternavn</td>
+        <br>
+        <label>Cpr: </label>
+        <td th:text="${patient.cpr}">cpr</td>
+        <br>
+        <label>Fødselsdato: </label>
+        <td th:text="${patient.foedselsdato}">dato</td>
+        <br>
+        <label>Telefonnummer: </label>
+        <td th:text="${patient.telefonNr}">nummer</td>
+        <br>
+        <label>Adresse: </label>
+        <td th:text="${patient.adresse}">adresse</td>
+        <br>
+        <label>Højde: </label>
+        <td th:text="${patient.hoejde}">højde</td>
+        <br>
+        <label>Vægt: </label>
+        <td th:text="${patient.vaegt}">vægt</td>
+        <br>
+        <label>Beskrivelse: </label>
+        <td th:text="${patient.kortBeskrivelse}">beskrivelse</td>
+        <br>
+
     </div>
 
 

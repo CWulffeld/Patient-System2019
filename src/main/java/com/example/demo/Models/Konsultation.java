@@ -1,9 +1,7 @@
 package com.example.demo.Models;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
 
 public class Konsultation {
 
@@ -22,9 +20,9 @@ public class Konsultation {
         this.dato = dato;
     }
 
-    public Konsultation(String patientFornavn,String patientEfternavn, int cpr, String beskrivelse,
+    public Konsultation(String patientNavn, int cpr, String beskrivelse,
                         String konklusion, String dato) {
-        this.patientNavn = patientFornavn + " " + patientEfternavn;
+        this.patientNavn = patientNavn;
         this.cpr = cpr;
         this.beskrivelse = beskrivelse;
         this.konklusion = konklusion;

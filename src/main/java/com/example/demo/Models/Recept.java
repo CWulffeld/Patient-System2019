@@ -13,9 +13,9 @@ public class Recept {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String dato;
 
-    public Recept(String patientFornavn, String patientEfternavn, int cpr, String note,
+    public Recept(String patientNavn, int cpr, String note,
                   String medicin, String dato) {
-        this.patientNavn = patientFornavn + " " + patientEfternavn;
+        this.patientNavn = patientNavn;
         this.cpr = cpr;
         this.note = note;
         this.medicin = medicin;

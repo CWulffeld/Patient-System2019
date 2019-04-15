@@ -16,9 +16,9 @@ public class Diagnose {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String dato;
 
-    public Diagnose(String patientFornavn, String patientEfternavn, int cpr, String diagnose,
+    public Diagnose(String patientNavn, int cpr, String diagnose,
                     String medicin, String note, String dato) {
-        this.patientNavn = patientFornavn + " " + patientEfternavn;
+        this.patientNavn = patientNavn;
         this.cpr = cpr;
         this.diagnose = diagnose;
         this.medicin= medicin;

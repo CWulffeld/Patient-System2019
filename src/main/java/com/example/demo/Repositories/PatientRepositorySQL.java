@@ -50,21 +50,6 @@ public class PatientRepositorySQL{
         SQLExecute(sql_insertPatient);
     }
 
-    //SELECT DISTINCT. selecter patient cpr via argumentet.
-    /*public boolean selectPatientCpr(int cpr ) throws SQLException, ClassNotFoundException {
-        Statement stmt = DBConfig.getConnection().createStatement();
-        String sql_selectPatientCpr = "SELECT patient_cpr From patient WHERE patient_cpr = " + cpr;
-        ResultSet rs = stmt.executeQuery(sql_selectPatientCpr);
-        boolean cprFundet = false;
-        while(rs.next()){
-            if(rs.getInt("Patient_cpr") == cpr){
-                cprFundet = true;
-            }
-        }
-        stmt.close();
-        return cprFundet;
-    }*/
-
     public Patient FindPatientData(int cpr) throws ClassNotFoundException, SQLException{
         Statement stmt = DBConfig.getConnection().createStatement();
         String FindPatientData = "SELECT * FROM patient WHERE (Patient_cpr = '" + cpr + "');";
@@ -118,44 +103,88 @@ public class PatientRepositorySQL{
         String opdaterPatientViaCpr = "UPDATE patient " +
                 "SET Patient_fornavn = '" + patient.getForNavn() +
                 "', Patient_efternavn = '" + patient.getEfterNavn() +
-                "', Patient_fødselsdato = '" + patient.getFødselsdato() +
+                "', Patient_fødselsdato = '" + patient.getFoedselsdato() +
                 "', Patient_telefonnr = '" + patient.getTelefonNr() +
                 "', Patient_adresse = '" + patient.getAdresse() +
-                "', Patient_højde = '" + patient.getHøjde() +
-                "', Patient_vægt = '" + patient.getVægt() +
+                "', Patient_højde = '" + patient.getHoejde() +
+                "', Patient_vægt = '" + patient.getVaegt() +
                 "', Patient_beskrivelse = '" + patient.getKortBeskrivelse() +
                 "' WHERE (Patient_cpr = '" + patient.getCpr() +"');";
 
         SQLExecute(opdaterPatientViaCpr);
     }
+    //2 næste, ikke færdig, aldrig brugt
+    public List<?> liste() throws SQLException, ClassNotFoundException
+    {
+        String innerJoin = "SELECT p.Patient_fornavn, p.Patient_efternavn, p.Patient_cpr, d.Medicin_navn" +
+                "FROM " + DBConfig.getUser() + ".patient as p" +
+                "INNER JOIN diagnose as d" +
+                "ON p.Patient_cpr = d.Patient_cpr";
+
+        Statement stmt = DBConfig.getConnection().createStatement();
+        List<?> liste = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery(innerJoin);
+        while(rs.next()){
+            String fornavn = rs.getString("Patient_fornavn");
+            String efternavn = rs.getString("Patient_efternavn");
+            int Cpr = rs.getInt("Patient_cpr");
+            String medicin = rs.getString("Diagnose_medicin");
+
+            //liste.add(new object(fornavn, efternavn, Cpr, medicin));
+        }
+        stmt.close();
+        return liste;
+    }
+
+    public List<?> mnayToMany() throws SQLException, ClassNotFoundException
+    {
+        String manyTomany = "SELECT p.Patient_fornavn, p.Patient_efternavn, p.Patient_cpr, d.Diagnose" +
+                "FROM " + DBConfig.getUser() + ".patient as p" +
+                "INNER JOIN diagnose as d" +
+                "ON p.Patient_cpr = d.Patient_cpr";
+
+        Statement stmt = DBConfig.getConnection().createStatement();
+        List<?> liste = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery(manyTomany);
+        while(rs.next()){
+            String fornavn = rs.getString("Patient_fornavn");
+            String efternavn = rs.getString("Patient_efternavn");
+            int Cpr = rs.getInt("Patient_cpr");
+            String diagnose = rs.getString("Diagnose");
+
+            //liste.add(new object(fornavn, efternavn, Cpr, diagnose));
+        }
+        stmt.close();
+        return liste;
+    }
 
     //Sorter table via parametre
     public void SorterViaFornavn() throws ClassNotFoundException, SQLException{
-        String SortViaFornavn = "SELECT * FROM patient ORDER BY Patient_fornavn ASC|DESC";
+        String SortViaFornavn = "SELECT * FROM patient ORDER BY Patient_fornavn DESC";
         SQLExecute(SortViaFornavn);
     }
 
     public void SorterViaEfternavn() throws ClassNotFoundException, SQLException{
-        String SortViaEfternavn = "SELECT * FROM patient ORDER BY Patient_efternavn ASC|DESC";
+        String SortViaEfternavn = "SELECT * FROM patient ORDER BY Patient_efternavn ASC";
         SQLExecute(SortViaEfternavn);
     }
 
     public void SorterViaCpr() throws ClassNotFoundException, SQLException{
-        String SortViaEfternavn = "SELECT * FROM patient ORDER BY Patient_cpr ASC|DESC";
+        String SortViaEfternavn = "SELECT * FROM patient ORDER BY Patient_cpr ASC";
         SQLExecute(SortViaEfternavn);
     }
 
     public void SorterViaAlder() throws ClassNotFoundException, SQLException{
-        String SortViaAlder = "SELECT * FROM patient ORDER BY Patient_alder ASC|DESC";
+        String SortViaAlder = "SELECT * FROM patient ORDER BY Patient_alder ASC";
         SQLExecute(SortViaAlder);
     }
     public void SorterViaHøjde() throws ClassNotFoundException, SQLException{
-        String SortViaHøjde = "SELECT * FROM patient ORDER BY Patient_højde ASC|DESC";
+        String SortViaHøjde = "SELECT * FROM patient ORDER BY Patient_højde ASC";
         SQLExecute(SortViaHøjde);
     }
 
     public void SorterViaVægt() throws ClassNotFoundException, SQLException{
-        String SortViaVægt = "SELECT * FROM patient ORDER BY Patient_vægt ASC|DESC";
+        String SortViaVægt = "SELECT * FROM patient ORDER BY Patient_vægt ASC";
         SQLExecute(SortViaVægt);
     }
 

@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -42,7 +40,8 @@ PatientService patientService;
 
 
     @GetMapping("/lægeStartsside")
-    public String lægeStartsside(){
+    public String lægeStartsside(Model model)throws SQLException, ClassNotFoundException{
+        model.addAttribute("patienter", patientService.findAllePatienter());
         return "lægeStartsside";
     }
 

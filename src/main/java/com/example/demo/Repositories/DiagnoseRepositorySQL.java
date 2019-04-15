@@ -1,11 +1,15 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Configs.DBConfig;
+import com.example.demo.Models.Diagnose;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class DiagnoseRepositorySQL {
@@ -49,39 +53,29 @@ public class DiagnoseRepositorySQL {
         SQLExecute(sql_insertDiagnose);
     }
 
+    public List<Diagnose> findPatientDiagnoseData(int cpr) throws ClassNotFoundException, SQLException{
+        Statement stmt = DBConfig.getConnection().createStatement();
+        String FindDiagnoseData = "SELECT * FROM diagnose WHERE (Patient_cpr = '" + cpr + "');";
+        List<Diagnose> diagnoser = new ArrayList<>();
+
+        ResultSet rs = stmt.executeQuery(FindDiagnoseData);
+        while(rs.next()){
+            String navn = rs.getString("Patient_navn");
+            int Cpr = rs.getInt("Patient_cpr");
+            String diagnose = rs.getString("Diagnose");
+            String medicin = rs.getString("Medicin_navn");
+            String note = rs.getString("Diagnose_note");
+            String dato = rs.getString("Diagnose_udstedt");
+
+            diagnoser.add(new Diagnose(navn, Cpr, diagnose, medicin, note, dato));
+        }
+        stmt.close();
+        return diagnoser;
+    }
+
     private void SQLExecute(String SQL) throws ClassNotFoundException, SQLException{
         Statement stmt = DBConfig.getConnection().createStatement();
         stmt.execute(SQL);
         stmt.close();
     }
-   // public void createDiagnose
-
-
-//    public void createPatientDiagnoseTable() throws SQLException, ClassNotFoundException {
-//        System.out.println("1");
-//
-//
-//        Statement stmt = DBConfig.getConnection().createStatement();
-//
-//
-//        System.out.println("5");
-//
-//        String sql_createDiagnoseTable = "CREATE TABLE IF NOT EXISTS patientDiagnose" +
-//                "(Patient_forNavn varchar (100)," +
-//                "Patient_efterName varchar(100)," +
-//                "Patient_cpr int(4)," +
-//                "Patient_fødselsdato DATE, " +
-//                "Patient_telefonnr int (8)," +
-//                "Patient_adresse varchar (100),"+
-//                "Patient_højde int (4)," +
-//                "Patient_vægt int (4)," +
-//                "Patient_beskrivelse varchar (250)" +
-//                ")";
-//
-//
-//        System.out.println("2 - Det virker");
-//        stmt.execute(sql_createDiagnoseTable);
-//        stmt.close();
-//
-//    }
 }

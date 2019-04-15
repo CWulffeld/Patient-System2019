@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//Havde ikke tid til at finde ud af hvordan, samt implementere en funktion der rykkede et object/variable herfra over til lægeControlleren
 @Controller
 public class LoginController {
 

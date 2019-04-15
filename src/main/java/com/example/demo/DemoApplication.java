@@ -12,6 +12,7 @@ import java.sql.SQLException;
 public class DemoApplication {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        //Bare så databaserne er der, ikke endelig løsning.
         DatabaseRepository database = new DatabaseRepository();
         database.createTables();
         SpringApplication.run(DemoApplication.class, args);

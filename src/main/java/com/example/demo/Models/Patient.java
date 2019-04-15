@@ -4,10 +4,7 @@ import com.example.demo.Services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class Patient {
@@ -19,9 +16,9 @@ public class Patient {
     @Id
     private int cpr;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String fødselsdato;
-    private int højde;
-    private int vægt;
+    private String foedselsdato;
+    private int hoejde;
+    private int vaegt;
     private int telefonNr = 0;
     private String adresse;
     private String kortBeskrivelse;
@@ -30,16 +27,16 @@ public class Patient {
     @Autowired
     PatientService patientService;
 
-    public Patient(String forNavn, String efterNavn, int cpr, String fødselsdato, int telefonNr, String adresse, int højde, int vægt, String kortBeskrivelse){
+    public Patient(String forNavn, String efterNavn, int cpr, String foedselsdato, int telefonNr, String adresse, int hoejde, int vaegt, String kortBeskrivelse){
 
         this.forNavn=forNavn;
         this.efterNavn=efterNavn;
         this.cpr=cpr;
-        this.fødselsdato=fødselsdato;
+        this.foedselsdato = foedselsdato;
         this.telefonNr=telefonNr;
         this.adresse=adresse;
-        this.højde=højde;
-        this.vægt=vægt;
+        this.hoejde = hoejde;
+        this.vaegt = vaegt;
         this.kortBeskrivelse=kortBeskrivelse;
     }
 
@@ -72,12 +69,12 @@ public class Patient {
         }
     }
 
-    public String getFødselsdato() {
-        return fødselsdato;
+    public String getFoedselsdato() {
+        return foedselsdato;
     }
 
-    public void setFødselsdato(String fødselsdato) {
-        this.fødselsdato = fødselsdato;
+    public void setFoedselsdato(String foedselsdato) {
+        this.foedselsdato = foedselsdato;
     }
 
     public int getTelefonNr() {
@@ -96,20 +93,20 @@ public class Patient {
         this.adresse = adresse;
     }
 
-    public int getHøjde() {
-        return højde;
+    public int getHoejde() {
+        return hoejde;
     }
 
-    public void setHøjde(int cm) {
-        this.højde = cm;
+    public void setHoejde(int cm) {
+        this.hoejde = cm;
     }
 
-    public int getVægt() {
-        return vægt;
+    public int getVaegt() {
+        return vaegt;
     }
 
-    public void setVægt(int vægt) {
-        this.vægt = vægt;
+    public void setVaegt(int vaegt) {
+        this.vaegt = vaegt;
     }
 
     public String getKortBeskrivelse() {
@@ -126,11 +123,11 @@ public class Patient {
                 "Fornavn = " + forNavn + '\'' +
                 "\n , Efternavn = " + efterNavn + '\'' +
                 "\n , Cpr = " + cpr + '\'' +
-                "\n , Fødselsdato = " + fødselsdato + '\'' +
+                "\n , Fødselsdato = " + foedselsdato + '\'' +
                 "\n , telefonNr = " + telefonNr + '\'' +
                 "\n , adresse = " + adresse + '\'' +
-                "\n , højde = " + højde + '\'' +
-                "\n , vægt = " + vægt + '\'' +
+                "\n , hoejde = " + hoejde + '\'' +
+                "\n , vaegt = " + vaegt + '\'' +
                 "\n , kortBeskrivelse = " + kortBeskrivelse;
     }
 }

@@ -21,11 +21,11 @@ public class PatientServiceImpl implements PatientService {
         patientRepositorySQL.insertPatienttoDB(patient.getForNavn()
                 , patient.getEfterNavn()
                 , patient.getCpr()
-                , patient.getFødselsdato()
+                , patient.getFoedselsdato()
                 , patient.getTelefonNr()
                 , patient.getAdresse()
-                , patient.getHøjde()
-                , patient.getVægt()
+                , patient.getHoejde()
+                , patient.getVaegt()
                 , patient.getKortBeskrivelse());
     }
 

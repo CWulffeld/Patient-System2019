@@ -7,8 +7,6 @@ import java.sql.Statement;
 
 public class DatabaseRepository {
     public void createTables() throws ClassNotFoundException, SQLException {
-
-
         String sql_createPatientTable = "CREATE TABLE IF NOT EXISTS "+ DBConfig.getUser() +".patient " +
                 "(Patient_fornavn varchar(50), " +
                 "Patient_efternavn varchar(50), " +

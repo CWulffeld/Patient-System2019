@@ -1,10 +1,14 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.Configs.DBConfig;
+import com.example.demo.Models.Recept;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class ReceptRepositorySQL {
@@ -36,6 +40,25 @@ public class ReceptRepositorySQL {
                 "', '" + medicin+ "', '" + udstedt +
                 "')";
         SQLExecute(sql_insertRecept);
+    }
+
+    public List<Recept> FindPatientReceptData(int cpr) throws ClassNotFoundException, SQLException{
+        Statement stmt = DBConfig.getConnection().createStatement();
+        String FindReceptData = "SELECT * FROM recept WHERE (Patient_cpr = '" + cpr + "');";
+        List<Recept> recepter = new ArrayList<>();
+
+        ResultSet rs = stmt.executeQuery(FindReceptData);
+        while(rs.next()){
+            String navn = rs.getString("Patient_navn");
+            int Cpr = rs.getInt("Patient_cpr");
+            String note = rs.getString("Recept_note");
+            String medicin = rs.getString("Medicin_navn");
+            String dato = rs.getString("Recept_udstedt");
+
+            recepter.add(new Recept(navn, Cpr, note, medicin, dato));
+        }
+        stmt.close();
+        return recepter;
     }
 
     private void SQLExecute(String SQL) throws ClassNotFoundException, SQLException{
